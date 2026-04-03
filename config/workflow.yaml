@@ -1,0 +1,41 @@
+input:
+  file: data/test_data.csv
+  id_columns:
+    - Sample_ID
+    - Notes
+  oxide_columns:
+    - SiO2
+    - TiO2
+    - Al2O3
+    - Fe2O3
+    - FeO
+    - FeOT
+    - MnO
+    - MgO
+    - CaO
+    - Na2O
+    - K2O
+    - P2O5
+    - ZrO2
+    - Cr2O3
+    - CO2
+    - S
+    - F
+    - Cl
+    - SO3
+
+calculation:
+  method: cipw
+  fe3_fraction: 0.15
+  strict: false
+
+workflow:
+  steps:
+    - read_csv
+    - select_valid_columns
+    - run_cipw
+    - append_id_columns
+    - export_csv
+
+output:
+  file: data/normative_results.csv

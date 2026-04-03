@@ -1,10 +1,12 @@
-cff-version: 1.2.0
-message: "Si utilizas este software en tu investigación, por favor cítalo de la siguiente manera."
+﻿cff-version: 1.2.0
+message: "If you use this software, please cite it as follows."
 authors:
   - family-names: "Zavaleta Reyes"
     given-names: "Jordan Angel Luciano"
-    affiliation: "Universidad Nacional de Ingeniería (UNI)"
+    affiliation: "Universidad Nacional de Ingenieria (UNI)"
+    email: "jordanzav@gisgeo.dev"
 title: "GeoNormPy: A Python engine for CIPW normative mineralogy"
-version: 1.0.0
-date-released: 2026-XX-XX
-url: "https://github.com/"
+version: "0.1.0"
+date-released: 2026-04-03
+url: "https://github.com/jordan-zav/GeoNormPy"
+license: "MIT"

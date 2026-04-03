@@ -13,7 +13,7 @@ GeoNormPy es un motor de calculo en Python para estimar mineralogia normativa CI
 ## Instalacion
 
 ```bash
-git clone <tu-repositorio>
+git clone https://github.com/jordan-zav/GeoNormPy.git
 cd GeoNormPy
 pip install -e .
 ```
@@ -54,7 +54,7 @@ pytest -q
 
 ## Contexto academico
 
-Este software fue desarrollado por Jordan Angel Luciano Zavaleta Reyes en el contexto de investigacion aplicada a petrologia ignea y geoquimica computacional.
+Este software fue desarrollado por Jordan Angel Luciano Zavaleta Reyes en el contexto de investigación aplicada a petrología ígnea y geoquímica computacional.
 
 ## Como citar
 

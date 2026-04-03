@@ -37,5 +37,8 @@ Homepage = "https://github.com/jordan-zav/GeoNormPy"
 Repository = "https://github.com/jordan-zav/GeoNormPy"
 Issues = "https://github.com/jordan-zav/GeoNormPy/issues"
 
+[project.scripts]
+geonormpy = "geonormpy.cli:main"
+
 [tool.setuptools]
 packages = ["geonormpy", "geonormpy.core", "geonormpy.norms"]

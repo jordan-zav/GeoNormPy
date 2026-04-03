@@ -6,10 +6,7 @@ import pandas as pd
 import yaml
 
 from geonormpy.norms.batch import calculate_cipw_dataframe
-
-
-DEFAULT_CONFIG_PATH = Path("config/workflow.yaml")
-
+from geonormpy.schema import DEFAULT_CONFIG_PATH, validate_workflow_columns
 
 def load_workflow_config(config_path: str | Path = DEFAULT_CONFIG_PATH) -> dict:
     with Path(config_path).open("r", encoding="utf-8") as config_file:
@@ -23,6 +20,7 @@ def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH):
     output_file = Path(config["output"]["file"])
 
     df = pd.read_csv(input_file)
+    validation = validate_workflow_columns(df.columns)
 
     id_cols = config["input"].get("id_columns", [])
     oxide_cols = config["input"].get("oxide_columns", [])
@@ -30,6 +28,18 @@ def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH):
 
     if not use_cols:
         raise ValueError("No configured oxide columns were found in the input file.")
+
+    if validation["unknown_columns"]:
+        print(
+            "Warning: unknown columns found in input file: "
+            + ", ".join(validation["unknown_columns"])
+        )
+
+    if validation["missing_recommended_columns"]:
+        print(
+            "Warning: recommended columns missing from input file: "
+            + ", ".join(validation["missing_recommended_columns"])
+        )
 
     calculation = config.get("calculation", {})
     results_df = calculate_cipw_dataframe(

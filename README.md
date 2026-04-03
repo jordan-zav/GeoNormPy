@@ -46,6 +46,40 @@ python run_GeoNormPy.py
 
 The script reads `data/test_data.csv` and generates `data/normative_results.csv`.
 
+## Command-Line Interface
+
+GeoNormPy includes a command-line interface so users can inspect the supported
+schema, create templates, validate input files, and run workflows.
+
+```bash
+geonormpy --help
+geonormpy schema
+geonormpy validate --input data/test_data.csv
+geonormpy make-template
+geonormpy make-config
+geonormpy run --config config/workflow.yaml
+```
+
+### Supported Input Columns
+
+Optional ID columns:
+`Sample_ID`, `Notes`
+
+Supported oxide columns:
+`SiO2`, `TiO2`, `Al2O3`, `Fe2O3`, `FeO`, `FeOT`, `MnO`, `MgO`, `CaO`, `Na2O`,
+`K2O`, `P2O5`, `ZrO2`, `Cr2O3`, `CO2`, `S`, `F`, `Cl`, `SO3`
+
+### Standard Output Columns
+
+Diagnostic columns:
+`silica_saturation`, `alumina_state`, `mass_balance_error`, `interpretive_flag`,
+`calc_error`
+
+Normative mineral columns:
+`Q`, `Cor`, `Or`, `Ab`, `An`, `Le`, `Ne`, `Kp`, `Ac`, `Di`, `Hd`, `Wo`, `En`,
+`Fs`, `Fo`, `Fa`, `Mt`, `Hm`, `Ilm`, `Cm`, `Ru`, `Tn`, `Z`, `Ap`, `Cc`, `Py`,
+`Fl`, `Hl`, `Th`, `ns`, `ks`
+
 ## Development
 
 ```bash

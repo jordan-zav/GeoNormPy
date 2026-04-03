@@ -1,5 +1,6 @@
 import pandas as pd
 from geonormpy.norms.cipw import cipw
+from geonormpy.schema import DIAGNOSTIC_COLUMNS, MINERAL_COLUMNS
 
 
 def build_interpretive_flag(res: dict) -> str:
@@ -81,15 +82,24 @@ def calculate_cipw_dataframe(
 
     results_df = pd.DataFrame(records, index=df.index)
 
-    non_mineral_cols = [
-        "silica_saturation",
-        "alumina_state",
-        "mass_balance_error",
-        "interpretive_flag",
-        "calc_error",
-    ]
+    non_mineral_cols = DIAGNOSTIC_COLUMNS
 
     mineral_cols = [col for col in results_df.columns if col not in non_mineral_cols]
     results_df[mineral_cols] = results_df[mineral_cols].fillna(0.0)
+
+    ordered_present_diagnostics = [
+        column for column in DIAGNOSTIC_COLUMNS if column in results_df.columns
+    ]
+    ordered_present_minerals = [
+        mineral for mineral in MINERAL_COLUMNS if mineral in results_df.columns
+    ]
+    remaining_columns = [
+        column
+        for column in results_df.columns
+        if column not in ordered_present_diagnostics + ordered_present_minerals
+    ]
+    results_df = results_df[
+        remaining_columns + ordered_present_diagnostics + ordered_present_minerals
+    ]
 
     return results_df

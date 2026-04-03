@@ -1,16 +1,16 @@
 # GeoNormPy
 
-GeoNormPy es un motor de calculo en Python para estimar mineralogia normativa CIPW a partir de datos geoquimicos de roca total. El proyecto esta orientado a flujos de trabajo de petrologia ignea y a procesamiento reproducible de datos geoquimicos.
+GeoNormPy is a Python engine for estimating CIPW normative mineralogy from whole-rock geochemical data. The project is oriented toward igneous petrology workflows and reproducible geochemical data processing.
 
-## Caracteristicas
+## Features
 
-- Calculo CIPW secuencial con enfoque numericamente robusto.
-- Manejo de hierro a partir de `FeOT` o especiacion explicita `FeO`/`Fe2O3`.
-- Diagnosticos de saturacion de silice y estado de alumina.
-- Procesamiento individual y por lotes con `pandas`.
-- Suite de pruebas automatizadas con `pytest`.
+- Sequential CIPW calculation with a numerically robust approach.
+- Iron handling based on `FeOT` or explicit `FeO`/`Fe2O3` speciation.
+- Diagnostics for silica saturation and alumina state.
+- Single-sample and batch processing with `pandas`.
+- Automated test suite with `pytest`.
 
-## Instalacion
+## Installation
 
 ```bash
 git clone https://github.com/jordan-zav/GeoNormPy.git
@@ -18,12 +18,12 @@ cd GeoNormPy
 pip install -e .
 ```
 
-## Uso rapido
+## Quick Start
 
 ```python
 from geonormpy.norms.cipw import cipw
 
-muestra = {
+sample = {
     "SiO2": 72.5,
     "Al2O3": 13.5,
     "FeOT": 2.5,
@@ -33,33 +33,33 @@ muestra = {
     "K2O": 4.0,
 }
 
-resultado = cipw(muestra)
-print(resultado["minerals_wtpercent"])
-print(resultado["flags"])
+result = cipw(sample)
+print(result["minerals_wtpercent"])
+print(result["flags"])
 ```
 
-## Procesamiento por lotes
+## Batch Processing
 
 ```bash
 python run_GeoNormPy.py
 ```
 
-El script lee `data/test_data.csv` y genera `data/normative_results.csv`.
+The script reads `data/test_data.csv` and generates `data/normative_results.csv`.
 
-## Desarrollo
+## Development
 
 ```bash
 pytest -q
 ```
 
-## Contexto academico
+## Academic Context
 
-Este software fue desarrollado por Jordan Angel Luciano Zavaleta Reyes en el contexto de investigación aplicada a petrología ígnea y geoquímica computacional.
+This software was developed by Jordan Angel Luciano Zavaleta Reyes in the context of applied research in igneous petrology and computational geochemistry.
 
-## Como citar
+## How to Cite
 
-Si utilizas GeoNormPy en una tesis, articulo o informe tecnico, consulta el archivo `CITATION.cff`.
+If you use GeoNormPy in a thesis, article, or technical report, please refer to the `CITATION.cff` file.
 
-## Licencia
+## License
 
-Este proyecto se distribuye bajo la licencia MIT.
+This project is distributed under the MIT License.

@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geonormpy"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
   { name = "Jordan Angel Luciano Zavaleta Reyes", email = "jordanzav@gisgeo.dev" },
 ]
 description = "Python engine for CIPW normative mineralogy and igneous geochemistry workflows."
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT"
 keywords = ["geochemistry", "petrology", "cipw", "mineralogy", "igneous-rocks"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -22,7 +22,6 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Operating System :: OS Independent",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Topic :: Scientific/Engineering",
     "Topic :: Scientific/Engineering :: Chemistry",
 ]

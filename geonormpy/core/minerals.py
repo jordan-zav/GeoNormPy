@@ -48,7 +48,12 @@ MINERALS: Dict[str, Mineral] = {
     "Ru":  Mineral("Ru",  "TiO2", 79.87),
     "Tn":  Mineral("Tn",  "CaTiSiO5", 196.06),
     "Z":   Mineral("Z",   "ZrSiO4", 183.31),
-    "Ap":  Mineral("Ap",  "3.33CaO.P2O5", 328.86),
+    # Classical CIPW normative apatite convention after Cross et al. (1902):
+    # Ca(10/3)(PO4)2, i.e. 10/3 mol CaO per mol P2O5. This differs from the
+    # mineralogical apatite formula Ca10(PO4)6(OH,F,Cl)2, but it is the
+    # established normative representation and must stay consistent with the
+    # stoichiometry used in `norms/cipw.py`.
+    "Ap":  Mineral("Ap",  "Ca(10/3)(PO4)2", 328.86),
 
     # Volatiles, carbonates, salts
     "Cc":  Mineral("Cc",  "CaCO3", 100.09),

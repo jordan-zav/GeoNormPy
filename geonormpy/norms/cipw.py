@@ -114,6 +114,8 @@ def form_volatiles(state: ChemicalState, flags: dict):
 
     chlorine = state.get("Cl")
     if chlorine > 0:
+        # `hl` is tracked as formula moles of NaCl. This is numerically equal to
+        # the moles of Cl consumed because each formula unit contains one Cl.
         hl = min(chlorine, state.get("Na2O") * 2.0)
         state.consume(Cl=hl, Na2O=hl / 2.0)
         state.produce("Hl", hl)
@@ -135,6 +137,10 @@ def form_accessories(state: ChemicalState):
         state.consume(ZrO2=z, SiO2=z)
         state.produce("Z", z)
 
+    # Normative apatite follows the classical CIPW convention (Cross et al.
+    # 1902): 1 mol P2O5 consumes 10/3 mol CaO. The apatite molar mass defined
+    # in `core/minerals.py` is derived from this same convention and should be
+    # updated together if this representation ever changes.
     ap = min(state.get("P2O5"), state.get("CaO") / (10.0 / 3.0))
     if ap > 0:
         state.consume(P2O5=ap, CaO=ap * (10.0 / 3.0))
@@ -176,11 +182,15 @@ def form_iron_oxides(state: ChemicalState):
 def form_feldspars_and_residual_alkalis(state: ChemicalState):
     ort = min(state.get("K2O"), state.get("Al2O3"))
     if ort > 0:
+        # One mole of K2O provides two K cations, so it yields two formula moles
+        # of K-feldspar when enough Al and Si are available.
         state.consume(K2O=ort, Al2O3=ort, SiO2=6.0 * ort)
         state.produce("Or", 2.0 * ort)
 
     ab = min(state.get("Na2O"), state.get("Al2O3"))
     if ab > 0:
+        # One mole of Na2O provides two Na cations, so it yields two formula
+        # moles of albite when enough Al and Si are available.
         state.consume(Na2O=ab, Al2O3=ab, SiO2=6.0 * ab)
         state.produce("Ab", 2.0 * ab)
 
@@ -284,17 +294,11 @@ def silica_desaturation(state: ChemicalState, flags: dict):
         deficit -= reducible_hy / 2.0
 
     if deficit > 0:
-        ab = state.minerals.get("Ab", 0.0)
-        reducible_ab = min(ab, deficit / 2.0)
-        if reducible_ab > 0:
-            state.minerals["Ab"] = max(0.0, ab - reducible_ab)
-            state.produce("Ne", reducible_ab)
-            deficit -= 2.0 * reducible_ab
-
-    if deficit > 0:
         or_amount = state.minerals.get("Or", 0.0)
         reducible_or = min(or_amount, deficit)
         if reducible_or > 0:
+            # Mineral inventories are stored as formula moles, so one formula
+            # mole of Or -> Le recovers one mole of SiO2.
             state.minerals["Or"] = max(0.0, or_amount - reducible_or)
             state.produce("Le", reducible_or)
             deficit -= reducible_or
@@ -303,9 +307,19 @@ def silica_desaturation(state: ChemicalState, flags: dict):
         le_amount = state.minerals.get("Le", 0.0)
         reducible_le = min(le_amount, deficit)
         if reducible_le > 0:
+            # One formula mole of Le -> Kp recovers one mole of SiO2.
             state.minerals["Le"] = max(0.0, le_amount - reducible_le)
             state.produce("Kp", reducible_le)
             deficit -= reducible_le
+
+    if deficit > 0:
+        ab = state.minerals.get("Ab", 0.0)
+        reducible_ab = min(ab, deficit / 2.0)
+        if reducible_ab > 0:
+            # One formula mole of Ab -> Ne recovers two moles of SiO2.
+            state.minerals["Ab"] = max(0.0, ab - reducible_ab)
+            state.produce("Ne", reducible_ab)
+            deficit -= 2.0 * reducible_ab
 
     flags["residual_silica_deficit_moles"] = max(0.0, deficit)
     state.oxides["SiO2"] = 0.0
@@ -340,25 +354,25 @@ def cipw(
 
     state = ChemicalState(moles)
 
-    al_initial = state.get("Al2O3")
-    na_initial = state.get("Na2O")
-    k_initial = state.get("K2O")
-    ca_initial = state.get("CaO")
-
-    a_cnk = al_initial / (ca_initial + na_initial + k_initial + EPS)
-
-    if (na_initial + k_initial) > al_initial:
-        flags["alumina_state"] = "peralkaline"
-    elif a_cnk > 1.0:
-        flags["alumina_state"] = "peraluminous"
-    else:
-        flags["alumina_state"] = "metaluminous"
-
     form_volatiles(state, flags)
     state.clip()
 
     form_accessories(state)
     state.clip()
+
+    al_available = state.get("Al2O3")
+    na_available = state.get("Na2O")
+    k_available = state.get("K2O")
+    ca_available = state.get("CaO")
+
+    a_cnk = al_available / (ca_available + na_available + k_available + EPS)
+
+    if (na_available + k_available) > al_available:
+        flags["alumina_state"] = "peralkaline"
+    elif a_cnk > 1.0:
+        flags["alumina_state"] = "peraluminous"
+    else:
+        flags["alumina_state"] = "metaluminous"
 
     form_feldspars_and_residual_alkalis(state)
     state.clip()

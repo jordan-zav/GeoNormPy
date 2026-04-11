@@ -84,7 +84,7 @@ def handle_iron(
         flags["iron_mode"] = "estimated_from_FeOT"
         flags["iron_warning"] = True
         flags["warnings"].append(
-            "Iron speciation estimated from FeOT using fixed Fe3+/Fe ratio."
+            f"Iron speciation estimated from FeOT using fixed Fe3+/Fe ratio ({fe3_fraction:.2f})."
         )
 
     elif has_feot and (has_feo or has_fe2o3):
@@ -108,6 +108,11 @@ def handle_iron(
         feo_equivalent_wt = mn_wt * (MOLAR_MASS["FeO"] / MOLAR_MASS["MnO"])
         ox["FeO"] = ox.get("FeO", 0.0) + feo_equivalent_wt
         flags["warnings"].append("MnO converted to FeO-equivalent on a molar basis.")
+        if mn_wt > 0.5:
+            flags["iron_warning"] = True
+            flags["warnings"].append(
+                f"High MnO ({mn_wt:.2f} wt%) may bias FeO-equivalent allocation."
+            )
 
     return ox, flags
 

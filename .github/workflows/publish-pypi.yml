@@ -40,8 +40,6 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
 
     environment:
       name: testpypi
@@ -58,13 +56,14 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
+          user: __token__
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          skip-existing: true
 
   publish-pypi:
     if: github.event_name == 'release'
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
 
     environment:
       name: pypi
@@ -79,3 +78,7 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip-existing: true

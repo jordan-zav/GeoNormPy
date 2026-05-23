@@ -13,6 +13,9 @@ GeoNormPy is a Python engine for estimating CIPW normative mineralogy from whole
 ## Installation
 
 ```bash
+pip install geonormpy
+```
+```bash
 git clone https://github.com/jordan-zav/GeoNormPy.git
 cd GeoNormPy
 pip install -e .

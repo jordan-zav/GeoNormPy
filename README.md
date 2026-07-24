@@ -2,16 +2,6 @@
 
 GeoNormPy is a Python engine for estimating CIPW normative mineralogy from whole-rock geochemical data. The project is oriented toward igneous petrology workflows and reproducible geochemical data processing.
 
-
-## ⚖️ License (Dual Licensing)
-
-This project is distributed under a **Dual Licensing** model:
-
-1. **Open Source Use (GNU GPLv3):** You can use, study, modify, and redistribute this software for free, provided that any modified version or derivative work is also 100% open source under the GNU GPLv3 license.
-2. **Commercial / Private Use (Commercial License):** If you wish to integrate this code into proprietary, closed-source, or commercial software (without the obligation to open your own source code under the GPLv3), you must acquire an exclusive commercial license. Please contact the author to negotiate terms.
-
-For more details, see the [LICENSE](LICENSE) file.
-
 ---
 
 ## Features

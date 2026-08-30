@@ -11,9 +11,10 @@ authors = [
 description = "Python engine for CIPW normative mineralogy and igneous geochemistry workflows."
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT"
+license = "GPL-3.0-or-later"
 keywords = ["geochemistry", "petrology", "cipw", "mineralogy", "igneous-rocks"]
 classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",

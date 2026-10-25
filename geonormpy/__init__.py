@@ -22,6 +22,6 @@ from .schema import DIAGNOSTIC_COLUMNS, ID_COLUMNS, OXIDE_COLUMNS
 from .errors import GeoNormPyError
 from .norms.cipw import cipw, cipw_safe
 
-__version__ = "0.1.2"
+__version__ = "1.0.0"
 
 __all__ = ["ID_COLUMNS", "OXIDE_COLUMNS", "DIAGNOSTIC_COLUMNS", "__version__", "GeoNormPyError", "cipw", "cipw_safe"]

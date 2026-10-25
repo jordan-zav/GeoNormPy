@@ -1,6 +1,6 @@
 # Errores y salida JSON
 
-GeoNormPy 0.1.2 ofrece dos formas de integrar el cálculo. La función cipw devuelve la norma o lanza GeoNormPyError, compatible con ValueError. La excepción incluye code, field, details y el método to_dict. La función cipw_safe devuelve siempre un diccionario con ok, result y error.
+GeoNormPy 1.0.0 ofrece dos formas de integrar el cálculo. La función cipw devuelve la norma o lanza GeoNormPyError, compatible con ValueError. La excepción incluye code, field, details y el método to_dict. La función cipw_safe devuelve siempre un diccionario con ok, result y error.
 
     import json
     from geonormpy import cipw_safe

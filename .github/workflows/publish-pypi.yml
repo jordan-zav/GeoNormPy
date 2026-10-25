@@ -34,11 +34,17 @@ jobs:
       - name: Test before packaging
         run: python -m pytest -q
 
+      - name: Verify release tag matches the package
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: >-
+          python -c "import os,pathlib,tomllib; version=tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version']; tag=os.environ.get('RELEASE_TAG'); assert not tag or tag == 'v'+version, 'Release tag must match the package version'"
+
       - name: Build distributions
         run: python -m build
 
       - name: Check distributions
-        run: twine check dist/*
+        run: twine check --strict dist/*
 
       - name: Test the actual wheel
         run: >-

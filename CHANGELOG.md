@@ -1,6 +1,8 @@
 # Changelog
 
-## [0.1.2] - Prepared for publication
+## [1.0.0] - 2026-10-25
+
+- First stable release, incorporating the changes prepared as unreleased 0.1.2.
 
 - Validate oxide values and calculation options; keep metadata out of the norm.
 - Correct the silica-deficiency phase sequence and calcium priority for anorthite.

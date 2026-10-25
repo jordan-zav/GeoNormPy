@@ -7,9 +7,9 @@
 Transform major-oxide analyses into auditable normative mineral assemblages,
 diagnostics and batch-ready tables from Python or the command line.
 
-[![Release v0.1.1](https://img.shields.io/github/v/release/jordan-zav/GeoNormPy?color=2563eb)](https://github.com/jordan-zav/GeoNormPy/releases/latest)
+[![Release](https://img.shields.io/github/v/release/jordan-zav/GeoNormPy?color=2563eb)](https://github.com/jordan-zav/GeoNormPy/releases/latest)
 [![Tests](https://img.shields.io/github/actions/workflow/status/jordan-zav/GeoNormPy/python-package.yml?branch=main&label=tests)](https://github.com/jordan-zav/GeoNormPy/actions/workflows/python-package.yml)
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-3776ab?logo=python&logoColor=white)](https://www.python.org/)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-3776ab?logo=python&logoColor=white)](https://www.python.org/)
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/license-GPL--3.0--or--later-0f766e)](LICENSE)
 
 </div>
@@ -49,6 +49,15 @@ Major oxides + sample identifiers
 | Integration | Reusable normative-feature engine for GeoNormML |
 
 ## Supported chemistry
+
+### Model scope
+
+Version 1.0.0 exposes the extended_cipw_v3 model. It does not claim complete
+equivalence to every published CIPW implementation. Unresolved allocations are
+reported explicitly, and the safe API returns a structured error for them.
+For compositions rich in F, Cl or S, mass-balance warnings require interpretation
+of the oxygen basis. Iron estimated from FeOT uses an explicitly configurable
+fixed ferric fraction. See [model limits and errors](docs/ERRORS.md).
 
 Core and accessory inputs include:
 
@@ -169,7 +178,7 @@ and the [audit record](docs/methods/Auditoria_CIPW_Sesion_2026-04-10.md).
 
 ## Citation
 
-La versión 0.1.2 incorpora errores estructurados y salida JSON. Consulta [Errores e integración](docs/ERRORS.md) y [Preparación para PyPI](docs/PUBLISHING.md).
+La versión 1.0.0 incorpora errores estructurados y salida JSON. Consulta [Errores e integración](docs/ERRORS.md) y [Publicación en PyPI](docs/PUBLISHING.md).
 
 Use the metadata in [CITATION.cff](CITATION.cff) when citing GeoNormPy in a
 thesis, article or technical report.

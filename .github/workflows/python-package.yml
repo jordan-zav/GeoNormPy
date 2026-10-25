@@ -9,6 +9,9 @@ on:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.14"]
 
     steps:
       - name: Checkout repository
@@ -17,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
@@ -30,3 +33,7 @@ jobs:
 
       - name: Build distributions
         run: python -m build
+
+      - name: Test the built wheel outside the checkout
+        run: >-
+          python -c "import os,pathlib,pytest; os.environ['GEONORMPY_AUDIT_WHEEL']=str(next(pathlib.Path('dist').glob('*.whl')).resolve()); raise SystemExit(pytest.main(['tests/test_installed_wheel.py','-q']))"

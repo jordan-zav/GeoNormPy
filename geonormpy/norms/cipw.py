@@ -27,10 +27,13 @@ of the classical CIPW norm.
 from __future__ import annotations
 
 from typing import Dict
+from math import isfinite
+from numpy import bool_ as numpy_bool
 
-from ..core.chemistry import handle_iron, wtpercent_to_moles
+from ..core.chemistry import handle_iron, wtpercent_to_moles, normalize_oxides
 from ..core.constants import MOLAR_MASS
 from ..core.minerals import MINERAL_MOLAR_MASS
+from ..errors import GeoNormPyError, error_details
 
 EPS = 1e-12
 
@@ -57,13 +60,7 @@ TRACKED_OXIDES = [
 
 
 def normalize_anhydrous(oxides: Dict[str, float]) -> Dict[str, float]:
-    clean = {k: v for k, v in oxides.items() if v is not None}
-    total = sum(clean.values())
-
-    if total <= 0:
-        raise ValueError("Oxide sum must be > 0")
-
-    return {k: 100.0 * v / total for k, v in clean.items()}
+    return normalize_oxides(oxides)
 
 
 class ChemicalState:
@@ -171,7 +168,9 @@ def form_accessories(state: ChemicalState):
         state.consume(TiO2=ilm, FeO=ilm)
         state.produce("Ilm", ilm)
 
-    tn = min(state.get("TiO2"), state.get("CaO"), state.get("SiO2"))
+def form_residual_titanium(state: ChemicalState):
+    # Anorthite has priority for Ca before residual titanium forms titanite.
+    tn = min(state.get("TiO2"), state.get("CaO"))
     if tn > 0:
         state.consume(TiO2=tn, CaO=tn, SiO2=tn)
         state.produce("Tn", tn)
@@ -308,36 +307,43 @@ def silica_desaturation(state: ChemicalState, flags: dict):
 
         deficit -= reducible_hy / 2.0
 
-    if deficit > 0:
-        or_amount = state.minerals.get("Or", 0.0)
-        reducible_or = min(or_amount, deficit)
-        if reducible_or > 0:
-            # Mineral inventories are stored as formula moles, so one formula
-            # mole of Or -> Le recovers one mole of SiO2.
-            state.minerals["Or"] = max(0.0, or_amount - reducible_or)
-            state.produce("Le", reducible_or)
-            deficit -= reducible_or
+    def replace_phase(source: str, target: str, released_silica: float):
+        nonlocal deficit
+        amount = min(state.minerals.get(source, 0.0), max(0.0, deficit) / released_silica)
+        if amount > 0:
+            state.minerals[source] -= amount
+            state.produce(target, amount)
+            deficit -= amount * released_silica
 
-    if deficit > 0:
-        le_amount = state.minerals.get("Le", 0.0)
-        reducible_le = min(le_amount, deficit)
-        if reducible_le > 0:
-            # One formula mole of Le -> Kp recovers one mole of SiO2.
-            state.minerals["Le"] = max(0.0, le_amount - reducible_le)
-            state.produce("Kp", reducible_le)
-            deficit -= reducible_le
+    # Formula-mole reactions in the revised norm's deficiency sequence:
+    # Hy -> Ol; Tn -> Pf; Ab -> Ne; Or -> Le; Wo/Di -> Cs; Le -> Kp.
+    # Source: Verma et al. (2003), as documented by pyrolite.mineral.normative.
+    replace_phase("Tn", "Pf", 1.0)
+    replace_phase("Ab", "Ne", 2.0)
+    replace_phase("Or", "Le", 1.0)
 
-    if deficit > 0:
-        ab = state.minerals.get("Ab", 0.0)
-        reducible_ab = min(ab, deficit / 2.0)
-        if reducible_ab > 0:
-            # One formula mole of Ab -> Ne recovers two moles of SiO2.
-            state.minerals["Ab"] = max(0.0, ab - reducible_ab)
-            state.produce("Ne", reducible_ab)
-            deficit -= 2.0 * reducible_ab
+    converted = min(state.minerals.get("Wo", 0.0) / 2.0, max(0.0, deficit))
+    if converted > 0:
+        state.minerals["Wo"] -= 2 * converted
+        state.produce("Cs", converted)
+        deficit -= converted
 
-    flags["residual_silica_deficit_moles"] = max(0.0, deficit)
-    state.oxides["SiO2"] = 0.0
+    cpx = state.minerals.get("Di", 0.0) + state.minerals.get("Hd", 0.0)
+    reduced = min(cpx, max(0.0, deficit))
+    if reduced > 0:
+        di = reduced * state.minerals.get("Di", 0.0) / cpx
+        hd = reduced - di
+        state.minerals["Di"] = state.minerals.get("Di", 0.0) - di
+        state.minerals["Hd"] = state.minerals.get("Hd", 0.0) - hd
+        state.produce("Cs", reduced / 2.0)
+        state.produce("Fo", di / 2.0)
+        state.produce("Fa", hd / 2.0)
+        deficit -= reduced
+
+    replace_phase("Le", "Kp", 1.0)
+    deficit = max(0.0, deficit)
+    flags["residual_silica_deficit_moles"] = deficit
+    state.oxides["SiO2"] = -deficit
     state.clean_minerals()
 
 
@@ -348,7 +354,10 @@ def cipw(
     mass_tol: float = 1e-6,
     debug: bool = False,
 ):
-
+    if not isinstance(strict, bool) or not isinstance(debug, bool):
+        raise GeoNormPyError('invalid_option', "strict and debug must be boolean options, not text.", field='strict' if not isinstance(strict, bool) else 'debug')
+    if isinstance(mass_tol, (bool, numpy_bool)) or not isinstance(mass_tol, (int, float)) or not isfinite(mass_tol) or mass_tol < 0:
+        raise GeoNormPyError('invalid_option', "mass_tol must be finite and nonnegative.", field='mass_tol')
     ox = normalize_anhydrous(oxides)
     ox, iron_flags = handle_iron(ox, fe3_fraction=fe3_fraction, strict=strict)
     ox = normalize_anhydrous(ox)
@@ -357,7 +366,7 @@ def cipw(
         "volatile_fraction_moles": 0.0,
         "silica_saturation": None,
         "alumina_state": None,
-        "norm_model": "extended_cipw_v2",
+        "norm_model": "extended_cipw_v3",
         "mass_balance_warning": False,
         "residual_silica_deficit_moles": 0.0,
     }
@@ -392,6 +401,9 @@ def cipw(
     form_feldspars_and_residual_alkalis(state)
     state.clip()
 
+    form_residual_titanium(state)
+    state.clip()
+
     form_iron_oxides(state)
     state.clip()
 
@@ -401,6 +413,13 @@ def cipw(
     silica_desaturation(state, flags)
     state.clip()
     state.clean_minerals()
+
+    flags["calculation_complete"] = (
+        flags["residual_silica_deficit_moles"] <= EPS
+        and not any(abs(value) > EPS for value in state.oxides.values())
+    )
+    if strict and not flags["calculation_complete"]:
+        raise GeoNormPyError('allocation_incomplete', "CIPW allocation is incomplete: unresolved silica deficit or unallocated oxides. Check the composition and applicability of this norm.", details={'residual_silica_deficit_moles': flags['residual_silica_deficit_moles']})
 
     wt = {}
     for mineral, moles_value in state.minerals.items():
@@ -438,3 +457,16 @@ def cipw(
         result["residual_oxides_wt"] = residual_oxides_wt
 
     return result
+
+
+def cipw_safe(oxides, **options):
+    """Return a strict-JSON-compatible success/error envelope, without raising."""
+    try:
+        result = cipw(oxides, **options)
+        if not result['flags']['calculation_complete']:
+            raise GeoNormPyError('allocation_incomplete',
+                'CIPW allocation is incomplete. Check the composition and applicability of this norm.',
+                details={'residual_silica_deficit_moles': result['flags']['residual_silica_deficit_moles']})
+        return {'ok': True, 'result': result, 'error': None}
+    except Exception as error:
+        return {'ok': False, 'result': None, 'error': error_details(error)}

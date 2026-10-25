@@ -78,7 +78,7 @@ def test_exact_silica_saturation():
         assert "Fa" not in wt
 
 
-def test_potassic_feldspathoid_priority_precedes_nepheline():
+def test_nepheline_precedes_potassic_feldspathoids():
     sample = {
         "SiO2": 41.5,
         "Al2O3": 15.0,
@@ -93,10 +93,10 @@ def test_potassic_feldspathoid_priority_precedes_nepheline():
     wt = res["minerals_wtpercent"]
 
     assert res["flags"]["silica_saturation"] == "undersaturated"
-    assert "Le" in wt or "Kp" in wt
+    assert "Ne" in wt
 
 
-def test_kalsilite_precedes_nepheline_in_strongly_potassic_deficit():
+def test_strongly_potassic_deficit_exhausts_albite_before_kaliophilite():
     sample = {
         "SiO2": 39.0,
         "Al2O3": 15.0,
@@ -111,7 +111,9 @@ def test_kalsilite_precedes_nepheline_in_strongly_potassic_deficit():
     wt = res["minerals_wtpercent"]
 
     assert res["flags"]["silica_saturation"] == "undersaturated"
-    assert "Kp" in wt
+    assert "Ne" in wt
+    if "Kp" in wt:
+        assert "Ab" not in wt
 
 
 def test_halite_formula_moles_close_mass_balance():

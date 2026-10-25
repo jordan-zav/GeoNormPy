@@ -16,6 +16,10 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
+import io
+import json
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -32,21 +36,14 @@ from .schema import (
     expected_output_columns,
     validate_workflow_columns,
 )
+from .workflow import process_batch, load_workflow_config
+from .errors import GeoNormPyError, error_details
+from . import __version__
 
 
-def load_workflow_config(config_path: str | Path = DEFAULT_CONFIG_PATH) -> dict:
-    """Load a GeoNormPy workflow YAML configuration file."""
-    with Path(config_path).open("r", encoding="utf-8") as config_file:
-        return yaml.safe_load(config_file)
-
-
-def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH) -> Path:
-    """Run the configured batch workflow and return the output CSV path."""
-    from run_GeoNormPy import process_batch as _process_batch
-
-    _process_batch(config_path)
-    config = load_workflow_config(config_path)
-    return Path(config["output"]["file"])
+class GeoNormArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        raise GeoNormPyError('invalid_arguments', message + ' Use --help for usage.')
 
 
 def format_schema_text() -> str:
@@ -157,18 +154,33 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 def cmd_run(args: argparse.Namespace) -> int:
     output_path = process_batch(args.config)
+    frame = pd.read_csv(output_path)
+    errors = []
+    for index, row in frame.iterrows():
+        if pd.notna(row.get('calc_error')):
+            errors.append({'row': int(index), 'sample_id': str(row.get('Sample_ID', index)),
+                'error': json.loads(row['error_json'])})
+    args.result = {'output': str(output_path), 'samples': len(frame), 'failed': len(errors), 'errors': errors}
     print(f"Batch run completed. Output file: {output_path}")
-    return 0
+    if errors:
+        print(f"{len(errors)} sample(s) failed. Inspect calc_error, error_code and error_json in the output.")
+        if not getattr(args, 'json', False):
+            for failure in errors:
+                detail = failure['error']
+                print(f"Sample {failure['sample_id']} (row {failure['row']}): Error [{detail['code']}]: {detail['message']}", file=sys.stderr)
+    return 1 if errors else 0
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = GeoNormArgumentParser(
         prog="geonormpy",
         description=(
             "GeoNormPy: CIPW normative mineralogy tools with schema help, "
             "input templates, workflow configs, validation, and batch execution."
         ),
     )
+    parser.add_argument('--json', action='store_true', help='Emit one JSON response on stdout, including errors.')
+    parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     schema_parser = subparsers.add_parser(
@@ -226,14 +238,46 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to the workflow YAML configuration file.",
     )
     run_parser.set_defaults(func=cmd_run)
+    for command in (schema_parser, template_parser, config_parser, validate_parser, run_parser):
+        command.add_argument('--json', action='store_true', default=argparse.SUPPRESS,
+            help='Emit one JSON response on stdout, including errors.')
 
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = build_parser()
-    args = parser.parse_args(argv)
-    return args.func(args)
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    json_mode = '--json' in arguments
+    try:
+        if json_mode and any(flag in arguments for flag in ('--help', '-h', '--version')):
+            result = {'version': __version__} if '--version' in arguments else {'help': build_parser().format_help()}
+            print(json.dumps({'ok': True, 'result': result, 'error': None}, allow_nan=False))
+            return 0
+        args = build_parser().parse_args(arguments)
+        if not json_mode:
+            return args.func(args)
+        if args.command == 'schema':
+            args.format = 'json'
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            status = args.func(args)
+        result = getattr(args, 'result', None)
+        if args.command == 'schema':
+            result = json.loads(buffer.getvalue())
+        elif result is None:
+            result = {'message': buffer.getvalue().strip()}
+        error = None if status == 0 else GeoNormPyError(
+            'batch_sample_errors' if args.command == 'run' else 'validation_failed',
+            'Some samples failed; inspect result.errors.' if args.command == 'run' else 'Input validation failed.').to_dict()
+        print(json.dumps({'ok': status == 0, 'result': result, 'error': error}, allow_nan=False))
+        return status
+    except Exception as error:
+        detail = error_details(error)
+        if json_mode:
+            print(json.dumps({'ok': False, 'result': None, 'error': detail}, allow_nan=False))
+        else:
+            print(f"Error [{detail['code']}]: {detail['message']}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

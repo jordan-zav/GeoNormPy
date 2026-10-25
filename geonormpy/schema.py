@@ -59,6 +59,8 @@ DIAGNOSTIC_COLUMNS: List[str] = [
     "mass_balance_error",
     "interpretive_flag",
     "calc_error",
+    "error_code",
+    "error_json",
 ]
 
 MINERAL_COLUMNS: List[str] = list(MINERALS.keys())

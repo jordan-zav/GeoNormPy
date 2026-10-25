@@ -1,0 +1,6 @@
+include CHANGELOG.md CITATION.cff run_GeoNormPy.py
+include data/test_data.csv
+recursive-include config *.yaml
+recursive-include tests *.py
+include docs/ERRORS.md docs/PUBLISHING.md
+prune .sessions

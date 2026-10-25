@@ -169,6 +169,8 @@ and the [audit record](docs/methods/Auditoria_CIPW_Sesion_2026-04-10.md).
 
 ## Citation
 
+La versión 0.1.2 incorpora errores estructurados y salida JSON. Consulta [Errores e integración](docs/ERRORS.md) y [Preparación para PyPI](docs/PUBLISHING.md).
+
 Use the metadata in [CITATION.cff](CITATION.cff) when citing GeoNormPy in a
 thesis, article or technical report.
 

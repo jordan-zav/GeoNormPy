@@ -14,8 +14,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import pandas as pd
-from geonormpy.norms.cipw import cipw
-from geonormpy.schema import DIAGNOSTIC_COLUMNS, MINERAL_COLUMNS
+import json
+from geonormpy.norms.cipw import cipw_safe
+from geonormpy.errors import GeoNormPyError, error_details
+from geonormpy.schema import DIAGNOSTIC_COLUMNS, MINERAL_COLUMNS, OXIDE_COLUMNS
 
 
 def build_interpretive_flag(res: dict) -> str:
@@ -71,11 +73,15 @@ def calculate_cipw_dataframe(
 
         oxides = {}
         for key, value in numeric_row.items():
-            if isinstance(value, (int, float)):
-                oxides[key] = float(value)
+            if key in OXIDE_COLUMNS:
+                oxides[key] = value
 
         try:
-            res = cipw(oxides, fe3_fraction=fe3_fraction, strict=strict)
+            outcome = cipw_safe(oxides, fe3_fraction=fe3_fraction, strict=strict)
+            if not outcome['ok']:
+                error = outcome['error']
+                raise GeoNormPyError(error['code'], error['message'], field=error['field'], details=error['details'])
+            res = outcome['result']
 
             row_result = {**res["minerals_wtpercent"]}
             row_result["silica_saturation"] = res["flags"].get("silica_saturation")
@@ -83,6 +89,8 @@ def calculate_cipw_dataframe(
             row_result["mass_balance_error"] = res["mass_balance_error"]
             row_result["interpretive_flag"] = build_interpretive_flag(res)
             row_result["calc_error"] = None
+            row_result["error_code"] = None
+            row_result["error_json"] = None
 
         except Exception as e:
             row_result = {
@@ -91,16 +99,22 @@ def calculate_cipw_dataframe(
                 "mass_balance_error": None,
                 "interpretive_flag": "calculation_failed",
                 "calc_error": str(e),
+                "error_code": error_details(e)['code'],
+                "error_json": json.dumps(error_details(e), allow_nan=False),
             }
 
         records.append(row_result)
 
     results_df = pd.DataFrame(records, index=df.index)
+    for column in DIAGNOSTIC_COLUMNS + MINERAL_COLUMNS:
+        if column not in results_df:
+            results_df[column] = float("nan")
 
     non_mineral_cols = DIAGNOSTIC_COLUMNS
 
     mineral_cols = [col for col in results_df.columns if col not in non_mineral_cols]
-    results_df[mineral_cols] = results_df[mineral_cols].fillna(0.0)
+    successful = results_df["calc_error"].isna() if "calc_error" in results_df else pd.Series(False, index=results_df.index)
+    results_df.loc[successful, mineral_cols] = results_df.loc[successful, mineral_cols].fillna(0.0)
 
     ordered_present_diagnostics = [
         column for column in DIAGNOSTIC_COLUMNS if column in results_df.columns

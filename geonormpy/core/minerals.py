@@ -50,6 +50,8 @@ MINERALS: Dict[str, Mineral] = {
     "Di":  Mineral("Di",  "CaMgSi2O6", 216.55),
     "Hd":  Mineral("Hd",  "CaFeSi2O6", 248.09),
     "Wo":  Mineral("Wo",  "CaSiO3", 116.16),
+    "Cs":  Mineral("Cs",  "Ca2SiO4", 172.237),
+    "Pf":  Mineral("Pf",  "CaTiO3", 135.943),
     "En":  Mineral("En",  "MgSiO3", 100.39),
     "Fs":  Mineral("Fs",  "FeSiO3", 131.93),
     "Fo":  Mineral("Fo",  "Mg2SiO4", 140.69),

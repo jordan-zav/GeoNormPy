@@ -19,6 +19,9 @@ GeoNormPy public package exports.
 
 from .schema import DIAGNOSTIC_COLUMNS, ID_COLUMNS, OXIDE_COLUMNS
 
-__version__ = "0.1.1"
+from .errors import GeoNormPyError
+from .norms.cipw import cipw, cipw_safe
 
-__all__ = ["ID_COLUMNS", "OXIDE_COLUMNS", "DIAGNOSTIC_COLUMNS", "__version__"]
+__version__ = "0.1.2"
+
+__all__ = ["ID_COLUMNS", "OXIDE_COLUMNS", "DIAGNOSTIC_COLUMNS", "__version__", "GeoNormPyError", "cipw", "cipw_safe"]

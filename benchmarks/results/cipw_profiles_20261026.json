@@ -1,0 +1,203 @@
+{
+  "version": "1.1.0.dev0",
+  "python": "3.11.9",
+  "seed_major": 20261026,
+  "seed_extended": 20261027,
+  "reference": "pyrolite 0.3.8.post1; controlled major-only comparison",
+  "public_sha256": "38d8ab198a07693b47e23c0bb4f6479ff72fb5b581d49266af959354e40b5983",
+  "stress": {
+    "extended_cipw_v3": {
+      "major": {
+        "rows": 2000,
+        "complete": 924,
+        "incomplete": 1076,
+        "max_mass_error_complete": 0.0025900152408837585,
+        "max_inventory_error": null,
+        "max_scale_difference_pp_100_rows": 5.684341886080802e-14,
+        "seconds": 0.23551129999987097
+      },
+      "extended": {
+        "rows": 2000,
+        "complete": 757,
+        "incomplete": 1243,
+        "max_mass_error_complete": 1.0817896746764148,
+        "max_inventory_error": null,
+        "max_scale_difference_pp_100_rows": 4.618527782440651e-14,
+        "seconds": 0.27269189999992705
+      }
+    },
+    "verma2003": {
+      "major": {
+        "rows": 2000,
+        "complete": 982,
+        "incomplete": 1018,
+        "max_mass_error_complete": 2.842170943040401e-14,
+        "max_inventory_error": 5.684341886080802e-14,
+        "max_scale_difference_pp_100_rows": 3.907985046680551e-14,
+        "seconds": 0.29161900000008245
+      },
+      "extended": {
+        "rows": 2000,
+        "complete": 1026,
+        "incomplete": 974,
+        "max_mass_error_complete": 2.842170943040401e-14,
+        "max_inventory_error": 5.684341886080802e-14,
+        "max_scale_difference_pp_100_rows": 5.3290705182007514e-14,
+        "seconds": 0.33357520000004115
+      }
+    },
+    "pruseth2009": {
+      "major": {
+        "rows": 2000,
+        "complete": 1034,
+        "incomplete": 966,
+        "max_mass_error_complete": 4.263256414560601e-14,
+        "max_inventory_error": 5.684341886080802e-14,
+        "max_scale_difference_pp_100_rows": 1.2079226507921703e-13,
+        "seconds": 0.3649473999998918
+      },
+      "extended": {
+        "rows": 2000,
+        "complete": 1051,
+        "incomplete": 949,
+        "max_mass_error_complete": 4.263256414560601e-14,
+        "max_inventory_error": 5.684341886080802e-14,
+        "max_scale_difference_pp_100_rows": 8.415490526658687e-14,
+        "seconds": 0.4129772999999659
+      }
+    }
+  },
+  "reference_synthetic": {
+    "source_rows": 2000,
+    "compared_rows": 2000,
+    "excluded_iron": 0,
+    "reference_without_silica_deficit": 982,
+    "extended_cipw_v3": {
+      "complete": 924,
+      "incomplete": 1076,
+      "rows_reporting_unused_components": 0,
+      "shared_without_silica_deficit": 924,
+      "max_difference_shared_pp": 0.0017360680087747937,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.0017360680087747937,
+      "median_max_difference_complete_pp": 0.0006260387728902472,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": true
+    },
+    "verma2003": {
+      "complete": 982,
+      "incomplete": 1018,
+      "rows_reporting_unused_components": 95,
+      "shared_without_silica_deficit": 982,
+      "max_difference_shared_pp": 0.0042539302225188536,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.0042539302225188536,
+      "median_max_difference_complete_pp": 0.0016393118920987604,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": true
+    },
+    "pruseth2009": {
+      "complete": 1034,
+      "incomplete": 966,
+      "rows_reporting_unused_components": 95,
+      "shared_without_silica_deficit": 982,
+      "max_difference_shared_pp": 0.0042539302225188536,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 51.05528440256819,
+      "median_max_difference_complete_pp": 0.0016834558337346373,
+      "complete_rows_above_0_01pp": 52,
+      "apatite_included_in_phase_comparison": false
+    }
+  },
+  "reference_public": {
+    "source_rows": 551,
+    "compared_rows": 551,
+    "excluded_iron": 0,
+    "reference_without_silica_deficit": 525,
+    "extended_cipw_v3": {
+      "complete": 521,
+      "incomplete": 30,
+      "rows_reporting_unused_components": 0,
+      "shared_without_silica_deficit": 521,
+      "max_difference_shared_pp": 0.002299705927201856,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.002299705927201856,
+      "median_max_difference_complete_pp": 0.0005203127422248599,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": true
+    },
+    "verma2003": {
+      "complete": 525,
+      "incomplete": 26,
+      "rows_reporting_unused_components": 4,
+      "shared_without_silica_deficit": 525,
+      "max_difference_shared_pp": 0.0033551730160361615,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.0033551730160361615,
+      "median_max_difference_complete_pp": 0.001230674676328647,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": true
+    },
+    "pruseth2009": {
+      "complete": 526,
+      "incomplete": 25,
+      "rows_reporting_unused_components": 4,
+      "shared_without_silica_deficit": 525,
+      "max_difference_shared_pp": 0.003355173016064583,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 19.39270443359643,
+      "median_max_difference_complete_pp": 0.001232005892941146,
+      "complete_rows_above_0_01pp": 1,
+      "apatite_included_in_phase_comparison": false
+    }
+  },
+  "source_sha256": {
+    "geonormpy/norms/cipw.py": "37741ab36ed8832cf1eeb0d92c19f71b80dec8c731e44620210b006625c81de2",
+    "geonormpy/norms/revised.py": "2d30e0ef4d7e6e775cdb7cdd0b81c72bbbea110b48b65d9104b23f5b6120c328",
+    "geonormpy/core/iron.py": "288f269ac428e34dbdaf72b8f9145f31eb5893b554165523129c67fbc673147a",
+    "benchmarks/benchmark_profiles.py": "7355a5c6e81e2792f828964ebcc149eb8d25c31eaac5168cf6f877ffc424b435"
+  },
+  "local_sha256": "e57384afa323bebb3d18227e6071acce84699e27dd229c8b9635e62eed4b7ec9",
+  "reference_local": {
+    "source_rows": 2755,
+    "compared_rows": 2755,
+    "excluded_iron": 0,
+    "reference_without_silica_deficit": 2755,
+    "extended_cipw_v3": {
+      "complete": 2735,
+      "incomplete": 20,
+      "rows_reporting_unused_components": 0,
+      "shared_without_silica_deficit": 2735,
+      "max_difference_shared_pp": 0.0015293540583343201,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.0015293540583343201,
+      "median_max_difference_complete_pp": 0.00028295338444550566,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": true
+    },
+    "verma2003": {
+      "complete": 2755,
+      "incomplete": 0,
+      "rows_reporting_unused_components": 20,
+      "shared_without_silica_deficit": 2755,
+      "max_difference_shared_pp": 0.0035115627839985564,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.0035115627839985564,
+      "median_max_difference_complete_pp": 0.0007248088398252861,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": true
+    },
+    "pruseth2009": {
+      "complete": 2755,
+      "incomplete": 0,
+      "rows_reporting_unused_components": 20,
+      "shared_without_silica_deficit": 2755,
+      "max_difference_shared_pp": 0.003511562784026978,
+      "shared_rows_above_0_01pp": 0,
+      "max_difference_complete_pp": 0.003511562784026978,
+      "median_max_difference_complete_pp": 0.0007248088398323915,
+      "complete_rows_above_0_01pp": 0,
+      "apatite_included_in_phase_comparison": false
+    }
+  }
+}

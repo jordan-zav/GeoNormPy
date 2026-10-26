@@ -2,5 +2,11 @@ include CHANGELOG.md CITATION.cff run_GeoNormPy.py
 include data/test_data.csv
 recursive-include config *.yaml
 recursive-include tests *.py
+recursive-include tests/fixtures *.json
+recursive-include benchmarks *.py *.md *.json
+recursive-include scripts *.py
 include docs/ERRORS.md docs/PUBLISHING.md
+include docs/PERFILES_CIPW.md docs/validacion_perfiles_20261026.md
+include docs/pruebas_ampliadas_20261026.md
+include docs/benchmarks_y_metodos_cipw_20261025.md docs/revision_independiente_cipw_20261025.md
 prune .sessions

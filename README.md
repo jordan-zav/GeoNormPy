@@ -52,12 +52,12 @@ Major oxides + sample identifiers
 
 ### Model scope
 
-Version 1.0.0 exposes the extended_cipw_v3 model. It does not claim complete
-equivalence to every published CIPW implementation. Unresolved allocations are
-reported explicitly, and the safe API returns a structured error for them.
-For compositions rich in F, Cl or S, mass-balance warnings require interpretation
-of the oxygen basis. Iron estimated from FeOT uses an explicitly configurable
-fixed ferric fraction. See [model limits and errors](docs/ERRORS.md).
+Version 1.1.0 offers extended_cipw_v3 (default compatibility), verma2003 and
+pruseth2009 profiles, with independently selected iron policies. Their input
+sets, apatite conventions and free-component accounting differ. Unresolved
+allocations are reported explicitly; the safe API returns a structured error.
+See [profiles and scientific conventions](docs/PERFILES_CIPW.md) and
+[model limits and errors](docs/ERRORS.md).
 
 Core and accessory inputs include:
 
@@ -155,6 +155,12 @@ breaks traceability.
 
 ## Development and verification
 
+Version 1.1.0 adds three selectable CIPW profiles:
+extended_cipw_v3 (default compatibility), verma2003 and pruseth2009.
+Iron policies can be selected independently. Results record the selected
+profile, its version and calculation assumptions. See
+[profiles, API, CLI and scientific conventions](docs/PERFILES_CIPW.md).
+
 ```powershell
 python -m pip install -e .
 python -m pytest -q
@@ -165,6 +171,11 @@ configured workflows. See the [complete method description](docs/methods/Algorit
 and the [audit record](docs/methods/Auditoria_CIPW_Sesion_2026-04-10.md).
 
 ## Repository map
+
+The [extended CIPW benchmarks](docs/benchmarks_y_metodos_cipw_20261025.md)
+compare the major-oxide core with pyrolite, document numerical stability and
+iron sensitivity, and distinguish unresolved allocations from valid norms.
+See the [benchmark runner](benchmarks/README.md) for reproducible commands.
 
 | Path | Contents |
 | --- | --- |

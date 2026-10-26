@@ -51,6 +51,15 @@ OXIDE_COLUMNS: List[str] = [
     "F",
     "Cl",
     "SO3",
+    "Fe2O3T",
+    "NiO",
+    "CoO",
+    "SrO",
+    "BaO",
+    "Rb2O",
+    "Cs2O",
+    "Li2O",
+    "V2O3",
 ]
 
 DIAGNOSTIC_COLUMNS: List[str] = [
@@ -61,6 +70,14 @@ DIAGNOSTIC_COLUMNS: List[str] = [
     "calc_error",
     "error_code",
     "error_json",
+    "norm_profile",
+    "profile_version",
+    "implementation_version",
+    "iron_policy",
+    "iron_parameters_json",
+    "mass_accounted_sum",
+    "free_components_json",
+    "calculation_metadata_json",
 ]
 
 MINERAL_COLUMNS: List[str] = list(MINERALS.keys())

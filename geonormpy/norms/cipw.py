@@ -241,11 +241,13 @@ def form_mafic_silicates(state: ChemicalState):
 
     if mgfe > 0:
         cpx_total = min(state.get("CaO"), mgfe)
-        mg_ratio = mg_available / (mgfe + EPS)
-        fe_ratio = fe_available / (mgfe + EPS)
+        # The branch already guarantees a positive denominator. Adding EPS
+        # would leave artificial Mg/Fe behind and can turn exact silica
+        # saturation into a spurious deficit.
+        mg_ratio = mg_available / mgfe
 
         di = cpx_total * mg_ratio
-        hd = cpx_total * fe_ratio
+        hd = cpx_total - di
 
         if di > 0 or hd > 0:
             state.consume(
@@ -347,7 +349,7 @@ def silica_desaturation(state: ChemicalState, flags: dict):
     state.clean_minerals()
 
 
-def cipw(
+def _cipw_legacy(
     oxides: Dict[str, float],
     fe3_fraction: float = 0.15,
     strict: bool = False,
@@ -456,6 +458,61 @@ def cipw(
         result["residual_oxides_moles"] = residual_oxides_moles
         result["residual_oxides_wt"] = residual_oxides_wt
 
+    return result
+
+
+def cipw(oxides, fe3_fraction=0.15, strict=False, mass_tol=1e-6, debug=False, *,
+         profile="extended_cipw_v3", iron_policy="auto", carbonate_mode="calcite"):
+    """Calculate a versioned CIPW profile with an independent iron policy.
+
+    The default retains the historical numerical behavior. Revised profiles
+    report free components and gravimetric closure without forcing minerals
+    to sum to 100. All results include their calculation metadata.
+    """
+    from numbers import Real
+
+    from .._version import __version__
+    from ..core.iron import apply_iron_policy, finite_fraction
+    from .profiles import PROFILES, validate_options
+
+    name = validate_options(profile, iron_policy, carbonate_mode)
+    finite_fraction(fe3_fraction)
+    if not isinstance(strict, bool) or not isinstance(debug, bool):
+        raise GeoNormPyError("invalid_option", "strict and debug must be boolean options.", field="strict" if not isinstance(strict, bool) else "debug")
+    if isinstance(mass_tol, (bool, numpy_bool)) or not isinstance(mass_tol, Real) or not isfinite(mass_tol) or mass_tol < 0:
+        raise GeoNormPyError("invalid_option", "mass_tol must be finite and nonnegative.", field="mass_tol")
+    if name == "extended_cipw_v3":
+        source = oxides
+        policy_flags = None
+        if iron_policy != "auto":
+            source, policy_flags = apply_iron_policy(normalize_anhydrous(oxides), iron_policy,
+                                                    fe3_fraction, MOLAR_MASS, strict)
+        result = _cipw_legacy(source, fe3_fraction, strict, mass_tol, debug)
+        if policy_flags is not None:
+            warnings = list(dict.fromkeys(policy_flags["warnings"] + result["flags"]["warnings"]))
+            result["flags"].update(policy_flags)
+            result["flags"]["warnings"] = warnings
+        else:
+            applied = "fixed" if result["flags"]["iron_mode"] == "estimated_from_FeOT" else result["flags"]["iron_mode"]
+            result["flags"].update(iron_policy_requested="auto", iron_policy_applied=applied,
+                                    iron_parameters={"fe3_fraction": float(fe3_fraction)} if applied == "fixed" else {})
+    else:
+        from .revised import calculate_revised
+        result = calculate_revised(oxides, profile=name, iron_policy=iron_policy,
+                                   fe3_fraction=fe3_fraction, carbonate_mode=carbonate_mode,
+                                   strict=strict, mass_tol=mass_tol, debug=debug)
+    result["flags"].update(norm_profile=name, norm_profile_version=PROFILES[name]["version"])
+    result["calculation_metadata"] = {
+        "profile": name, "profile_version": PROFILES[name]["version"],
+        "implementation_version": __version__, "algorithm": PROFILES[name]["algorithm"],
+        "reference": PROFILES[name]["reference"], "iron_policy_requested": iron_policy,
+        "iron_policy_applied": result["flags"]["iron_policy_applied"],
+        "iron_parameters": result["flags"]["iron_parameters"],
+        "carbonate_mode": carbonate_mode, "strict": strict, "mass_tol": float(mass_tol),
+        "input_units": "wt_percent (oxides and F, Cl, S); no ppm inference",
+        "normalization": "common input basis: all supplied components to 100 before and after iron policy; no intermediate rounding",
+        "mineral_units": "formula moles and wt_percent; FAp formula uses three P2O5",
+    }
     return result
 
 

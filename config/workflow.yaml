@@ -26,8 +26,12 @@ input:
 
 calculation:
   method: cipw
+  profile: extended_cipw_v3
+  iron_policy: auto
+  carbonate_mode: calcite
   fe3_fraction: 0.15
   strict: false
+  mass_tol: 0.000001
 
 workflow:
   steps:

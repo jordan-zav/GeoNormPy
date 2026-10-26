@@ -1,0 +1,170 @@
+{
+  "seed": 2026102607,
+  "reference": "pyrolite 0.3.8.post1",
+  "groups": {
+    "substitutions": {
+      "rows": 500,
+      "shared_no_deficit": 500,
+      "max_difference_shared_pp": 0.003814393490050527,
+      "rows_shared_above_0_01pp": 0,
+      "max_local_mass_error_complete": 2.842170943040401e-14,
+      "largest_difference_phases": {
+        "Q": 316,
+        "Ab": 131,
+        "En": 46,
+        "Fs": 4,
+        "Or": 3
+      }
+    },
+    "balanced_accessories": {
+      "rows": 500,
+      "shared_no_deficit": 500,
+      "max_difference_shared_pp": 0.0022702366925702044,
+      "rows_shared_above_0_01pp": 0,
+      "max_local_mass_error_complete": 2.842170943040401e-14,
+      "largest_difference_phases": {
+        "Q": 321,
+        "Ab": 129,
+        "En": 41,
+        "Fs": 9
+      }
+    },
+    "fluorine_excess": {
+      "rows": 500,
+      "shared_no_deficit": 500,
+      "max_difference_shared_pp": 0.0022181324983292505,
+      "rows_shared_above_0_01pp": 0,
+      "max_local_mass_error_complete": 2.842170943040401e-14,
+      "largest_difference_phases": {
+        "Q": 387,
+        "Ab": 67,
+        "En": 35,
+        "Fs": 11
+      }
+    },
+    "limiting_reagents": {
+      "rows": 500,
+      "shared_no_deficit": 500,
+      "max_difference_shared_pp": 0.10181009680455566,
+      "rows_shared_above_0_01pp": 500,
+      "max_local_mass_error_complete": 2.842170943040401e-14,
+      "largest_difference_phases": {
+        "Hl": 500
+      }
+    }
+  },
+  "version": "1.1.0.dev0",
+  "scope": "Reference-adjusted oxide inputs, measured iron, sodium-carbonate assumption; apatite excluded from maximum difference.",
+  "limiting_reagent_witnesses": [
+    {
+      "phase": "Hl",
+      "input_wtpercent": {
+        "SiO2": 95.993856393191,
+        "TiO2": 0.0,
+        "Al2O3": 0.0,
+        "Fe2O3": 0.0,
+        "FeO": 0.0,
+        "MgO": 0.0,
+        "CaO": 0.0,
+        "Na2O": 0.159989760655,
+        "K2O": 0.0,
+        "P2O5": 0.0,
+        "MnO": 0.0,
+        "NiO": 0.0,
+        "CoO": 0.0,
+        "SrO": 0.0,
+        "BaO": 0.0,
+        "Rb2O": 0.0,
+        "Cs2O": 0.0,
+        "Li2O": 0.0,
+        "V2O3": 0.0,
+        "Cr2O3": 0.0,
+        "ZrO2": 0.0,
+        "CO2": 0.0,
+        "S": 0.0,
+        "F": 0.0,
+        "Cl": 3.846153846154,
+        "SO3": 0.0
+      },
+      "hand_formula_moles": 0.005162713678388175,
+      "local_formula_moles": 0.005162713678388175,
+      "local_wtpercent": 0.3017217392677906,
+      "reference_wtpercent": 0.075427437603
+    },
+    {
+      "phase": "Hl",
+      "input_wtpercent": {
+        "SiO2": 99.783718789524,
+        "TiO2": 0.0,
+        "Al2O3": 0.0,
+        "Fe2O3": 0.0,
+        "FeO": 0.0,
+        "MgO": 0.0,
+        "CaO": 0.0,
+        "Na2O": 0.166306197983,
+        "K2O": 0.0,
+        "P2O5": 0.0,
+        "MnO": 0.0,
+        "NiO": 0.0,
+        "CoO": 0.0,
+        "SrO": 0.0,
+        "BaO": 0.0,
+        "Rb2O": 0.0,
+        "Cs2O": 0.0,
+        "Li2O": 0.0,
+        "V2O3": 0.0,
+        "Cr2O3": 0.0,
+        "ZrO2": 0.0,
+        "CO2": 0.0,
+        "S": 0.0,
+        "F": 0.0,
+        "Cl": 0.049975012494,
+        "SO3": 0.0
+      },
+      "hand_formula_moles": 0.001409625007234992,
+      "local_formula_moles": 0.001409625007234978,
+      "local_wtpercent": 0.08238196719657999,
+      "reference_wtpercent": 0.07840533244
+    },
+    {
+      "phase": "Py",
+      "input_wtpercent": {
+        "SiO2": 99.7671186034,
+        "TiO2": 0.0,
+        "Al2O3": 0.0,
+        "Fe2O3": 0.016627853101,
+        "FeO": 0.166278531006,
+        "MgO": 0.0,
+        "CaO": 0.0,
+        "Na2O": 0.0,
+        "K2O": 0.0,
+        "P2O5": 0.0,
+        "MnO": 0.0,
+        "NiO": 0.0,
+        "CoO": 0.0,
+        "SrO": 0.0,
+        "BaO": 0.0,
+        "Rb2O": 0.0,
+        "Cs2O": 0.0,
+        "Li2O": 0.0,
+        "V2O3": 0.0,
+        "Cr2O3": 0.0,
+        "ZrO2": 0.0,
+        "CO2": 0.0,
+        "S": 0.049975012494,
+        "F": 0.0,
+        "Cl": 0.0,
+        "SO3": 0.0
+      },
+      "hand_formula_moles": 0.0007792523622216677,
+      "local_formula_moles": 0.0007792523622216601,
+      "local_wtpercent": 0.09349236066226813,
+      "reference_wtpercent": 0.277651633708
+    }
+  ],
+  "source_sha256": {
+    "geonormpy/norms/revised.py": "2d30e0ef4d7e6e775cdb7cdd0b81c72bbbea110b48b65d9104b23f5b6120c328",
+    "tests/test_profile_properties.py": "0df2884b6d4e531caf1543b6877770e76bbf7154537b36d7f32bc1e7beaeabce",
+    "benchmarks/benchmark_accessories.py": "e02b45a0cd7a2bef7bb47815b6af5d2e8c5e4edc0c5606ae912e38560c1d1679"
+  }
+}

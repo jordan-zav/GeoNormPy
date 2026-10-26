@@ -71,6 +71,10 @@ MINERALS: Dict[str, Mineral] = {
     # established normative representation and must stay consistent with the
     # stoichiometry used in `norms/cipw.py`.
     "Ap":  Mineral("Ap",  "Ca(10/3)(PO4)2", 328.86),
+    # Revised profiles derive their exact/variable masses from oxide weights.
+    # These values identify the additional output phases for schema clients.
+    "FAp": Mineral("FAp", "Ca10(PO4)6F2", 1008.6049724),
+    "Nc": Mineral("Nc", "Na2CO3", 105.98844),
 
     # Volatiles, carbonates, salts
     "Cc":  Mineral("Cc",  "CaCO3", 100.09),

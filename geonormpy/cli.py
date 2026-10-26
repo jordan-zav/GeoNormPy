@@ -39,6 +39,7 @@ from .schema import (
 from .workflow import process_batch, load_workflow_config
 from .errors import GeoNormPyError, error_details
 from . import __version__
+from .norms.profiles import available_profiles, PROFILES, IRON_POLICIES, CARBONATE_MODES
 
 
 class GeoNormArgumentParser(argparse.ArgumentParser):
@@ -79,8 +80,12 @@ def build_default_config() -> dict:
         },
         "calculation": {
             "method": "cipw",
+            "profile": "extended_cipw_v3",
+            "iron_policy": "auto",
+            "carbonate_mode": "calcite",
             "fe3_fraction": 0.15,
             "strict": False,
+            "mass_tol": 1e-6,
         },
         "workflow": {
             "steps": WORKFLOW_STEPS,
@@ -102,11 +107,17 @@ def cmd_schema(args: argparse.Namespace) -> int:
             "mineral_output_columns": MINERAL_COLUMNS,
             "expected_output_columns": expected_output_columns(),
             "workflow_steps": WORKFLOW_STEPS,
+            "calculation_profiles": available_profiles(),
         }
         print(json.dumps(payload, indent=2))
         return 0
 
     print(format_schema_text())
+    return 0
+
+
+def cmd_profiles(args):
+    print(json.dumps(available_profiles(), indent=2))
     return 0
 
 
@@ -153,7 +164,10 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    output_path = process_batch(args.config)
+    overrides = {name: getattr(args, name) for name in
+                 ("profile", "iron_policy", "fe3_fraction", "strict", "mass_tol", "carbonate_mode")
+                 if getattr(args, name, None) is not None}
+    output_path = process_batch(args.config, calculation_overrides=overrides)
     frame = pd.read_csv(output_path)
     errors = []
     for index, row in frame.iterrows():
@@ -194,6 +208,9 @@ def build_parser() -> argparse.ArgumentParser:
         help="Choose a human-readable text view or JSON schema output.",
     )
     schema_parser.set_defaults(func=cmd_schema)
+
+    profiles_parser = subparsers.add_parser("profiles", help="List versioned CIPW profiles and iron policies.")
+    profiles_parser.set_defaults(func=cmd_profiles)
 
     template_parser = subparsers.add_parser(
         "make-template",
@@ -238,7 +255,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to the workflow YAML configuration file.",
     )
     run_parser.set_defaults(func=cmd_run)
-    for command in (schema_parser, template_parser, config_parser, validate_parser, run_parser):
+    run_parser.add_argument("--profile", choices=list(PROFILES), default=None, help="Override the YAML calculation profile.")
+    run_parser.add_argument("--iron-policy", choices=IRON_POLICIES, default=None)
+    run_parser.add_argument("--fe3-fraction", type=float, default=None)
+    run_parser.add_argument("--carbonate-mode", choices=CARBONATE_MODES, default=None)
+    run_parser.add_argument("--mass-tol", type=float, default=None)
+    run_parser.add_argument("--strict", action="store_true", default=None)
+    for command in (schema_parser, profiles_parser, template_parser, config_parser, validate_parser, run_parser):
         command.add_argument('--json', action='store_true', default=argparse.SUPPRESS,
             help='Emit one JSON response on stdout, including errors.')
 
@@ -262,7 +285,7 @@ def main(argv: list[str] | None = None) -> int:
         with contextlib.redirect_stdout(buffer):
             status = args.func(args)
         result = getattr(args, 'result', None)
-        if args.command == 'schema':
+        if args.command in ('schema', 'profiles'):
             result = json.loads(buffer.getvalue())
         elif result is None:
             result = {'message': buffer.getvalue().strip()}

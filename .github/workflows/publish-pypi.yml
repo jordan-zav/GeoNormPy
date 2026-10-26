@@ -46,6 +46,9 @@ jobs:
       - name: Check distributions
         run: twine check --strict dist/*
 
+      - name: Verify package metadata and source regression resources
+        run: python scripts/check_distribution.py dist
+
       - name: Test the actual wheel
         run: >-
           python -c "import os,pathlib,pytest; os.environ['GEONORMPY_AUDIT_WHEEL']=str(next(pathlib.Path('dist').glob('*.whl')).resolve()); raise SystemExit(pytest.main(['tests/test_installed_wheel.py','-q']))"

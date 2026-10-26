@@ -35,7 +35,7 @@ def load_workflow_config(config_path: str | Path = DEFAULT_CONFIG_PATH) -> dict:
         raise GeoNormPyError('invalid_configuration', f'Invalid YAML configuration: {error}', field='config') from error
 
 
-def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH):
+def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH, *, calculation_overrides=None):
     config = load_workflow_config(config_path)
     if not isinstance(config, dict):
         raise GeoNormPyError('invalid_configuration', "Workflow configuration must be a mapping", field='config')
@@ -47,6 +47,20 @@ def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH):
             raise GeoNormPyError('invalid_configuration', f'Specify {section}.file in the configuration.', field=f'{section}.file')
     if config.get("calculation", {}).get("method", "cipw") != "cipw":
         raise GeoNormPyError('invalid_configuration', "Unsupported calculation method; use cipw.", field='calculation.method')
+    calculation = dict(config.get("calculation", {}))
+    allowed = {"method", "profile", "iron_policy", "fe3_fraction", "strict", "mass_tol", "carbonate_mode"}
+    if calculation_overrides is not None:
+        if not isinstance(calculation_overrides, dict):
+            raise GeoNormPyError("invalid_configuration", "Calculation overrides must be a mapping.", field="calculation")
+        calculation.update(calculation_overrides)
+    unknown = set(calculation) - allowed
+    if unknown:
+        raise GeoNormPyError("invalid_configuration", f"Unknown calculation options: {sorted(unknown)}.", field="calculation")
+    if calculation.get("method", "cipw") != "cipw":
+        raise GeoNormPyError("invalid_configuration", "Unsupported calculation method; use cipw.", field="calculation.method")
+    from .norms.profiles import validate_options
+    validate_options(calculation.get("profile", "extended_cipw_v3"),
+                     calculation.get("iron_policy", "auto"), calculation.get("carbonate_mode", "calcite"))
     if config.get("workflow", {}).get("steps", WORKFLOW_STEPS) != WORKFLOW_STEPS:
         raise GeoNormPyError('invalid_configuration', "Unsupported workflow steps or order", field='workflow.steps')
 
@@ -82,11 +96,14 @@ def process_batch(config_path: str | Path = DEFAULT_CONFIG_PATH):
             + ", ".join(validation["missing_recommended_columns"])
         )
 
-    calculation = config.get("calculation", {})
     results_df = calculate_cipw_dataframe(
         df[use_cols],
         fe3_fraction=calculation.get("fe3_fraction", 0.15),
         strict=calculation.get("strict", False),
+        profile=calculation.get("profile", "extended_cipw_v3"),
+        iron_policy=calculation.get("iron_policy", "auto"),
+        carbonate_mode=calculation.get("carbonate_mode", "calcite"),
+        mass_tol=calculation.get("mass_tol", 1e-6),
     )
 
     insert_index = 0

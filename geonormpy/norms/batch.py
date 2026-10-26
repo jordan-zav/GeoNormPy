@@ -52,7 +52,12 @@ def build_interpretive_flag(res: dict) -> str:
 def calculate_cipw_dataframe(
     df: pd.DataFrame,
     fe3_fraction: float = 0.15,
-    strict: bool = False
+    strict: bool = False,
+    *,
+    profile: str = "extended_cipw_v3",
+    iron_policy: str = "auto",
+    carbonate_mode: str = "calcite",
+    mass_tol: float = 1e-6,
 ) -> pd.DataFrame:
     """
     Apply CIPW normative calculation to a Pandas DataFrame of geochemical samples.
@@ -66,6 +71,9 @@ def calculate_cipw_dataframe(
         pd.DataFrame: A new DataFrame with normative wt%, flags, diagnostics,
         and an interpretive text flag column.
     """
+    from .._version import __version__
+    from .profiles import PROFILES, validate_options
+    canonical = validate_options(profile, iron_policy, carbonate_mode)
     records = []
 
     for index, row in df.iterrows():
@@ -77,7 +85,9 @@ def calculate_cipw_dataframe(
                 oxides[key] = value
 
         try:
-            outcome = cipw_safe(oxides, fe3_fraction=fe3_fraction, strict=strict)
+            outcome = cipw_safe(oxides, fe3_fraction=fe3_fraction, strict=strict,
+                                profile=canonical, iron_policy=iron_policy,
+                                carbonate_mode=carbonate_mode, mass_tol=mass_tol)
             if not outcome['ok']:
                 error = outcome['error']
                 raise GeoNormPyError(error['code'], error['message'], field=error['field'], details=error['details'])
@@ -91,6 +101,15 @@ def calculate_cipw_dataframe(
             row_result["calc_error"] = None
             row_result["error_code"] = None
             row_result["error_json"] = None
+            metadata = res["calculation_metadata"]
+            row_result.update(
+                norm_profile=canonical, profile_version=metadata["profile_version"],
+                implementation_version=__version__, iron_policy=metadata["iron_policy_applied"],
+                iron_parameters_json=json.dumps(metadata["iron_parameters"], allow_nan=False, sort_keys=True),
+                mass_accounted_sum=res.get("mass_balance", {}).get("accounted_sum", res["total_mass_sum"]),
+                free_components_json=json.dumps(res.get("free_components_wtpercent", {}), allow_nan=False, sort_keys=True),
+                calculation_metadata_json=json.dumps(metadata, allow_nan=False, sort_keys=True),
+            )
 
         except Exception as e:
             row_result = {
@@ -101,6 +120,12 @@ def calculate_cipw_dataframe(
                 "calc_error": str(e),
                 "error_code": error_details(e)['code'],
                 "error_json": json.dumps(error_details(e), allow_nan=False),
+                "norm_profile": canonical,
+                "profile_version": PROFILES[canonical]["version"],
+                "implementation_version": __version__,
+                "iron_policy": iron_policy,
+                "iron_parameters_json": json.dumps({"fe3_fraction": fe3_fraction}, default=str),
+                "calculation_metadata_json": json.dumps({"profile": canonical, "iron_policy_requested": iron_policy}, sort_keys=True),
             }
 
         records.append(row_result)

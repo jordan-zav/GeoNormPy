@@ -1,3 +1,5 @@
+<p align="center"><strong>English</strong> · <a href="README.es.md">Español</a></p>
+
 <div align="center">
 
 # GeoNormPy
@@ -21,7 +23,7 @@ diagnostics and batch-ready tables from Python or the command line.
 
 ## Workflow at a glance
 
-```text
+~~~text
 Major oxides + sample identifiers
               │
               ▼
@@ -35,14 +37,14 @@ Major oxides + sample identifiers
               │
               ▼
  Python dictionary / pandas table / CSV workflow
-```
+~~~
 
 ## Capabilities
 
 | Area | Support |
 | --- | --- |
 | Calculation | Sequential CIPW normative mineral allocation |
-| Iron | Total iron as `FeOT` or explicit `FeO` and `Fe2O3` inputs |
+| Iron | Total iron as <code>FeOT</code> or explicit <code>FeO</code> and <code>Fe2O3</code> inputs |
 | Diagnostics | Silica saturation, alumina state, mass-balance error and interpretive flags |
 | Execution | Single-sample Python API, pandas batch processing and CLI workflows |
 | Reproducibility | YAML configuration, schema inspection, templates and input validation |
@@ -61,10 +63,10 @@ See [profiles and scientific conventions](docs/PERFILES_CIPW.md) and
 
 Core and accessory inputs include:
 
-`SiO2`, `TiO2`, `Al2O3`, `Fe2O3`, `FeO`, `FeOT`, `MnO`, `MgO`, `CaO`,
-`Na2O`, `K2O`, `P2O5`, `ZrO2`, `Cr2O3`, `CO2`, `S`, `F`, `Cl` and `SO3`.
+<code>SiO2</code>, <code>TiO2</code>, <code>Al2O3</code>, <code>Fe2O3</code>, <code>FeO</code>, <code>FeOT</code>, <code>MnO</code>, <code>MgO</code>, <code>CaO</code>,
+<code>Na2O</code>, <code>K2O</code>, <code>P2O5</code>, <code>ZrO2</code>, <code>Cr2O3</code>, <code>CO2</code>, <code>S</code>, <code>F</code>, <code>Cl</code> and <code>SO3</code>.
 
-Optional identifier columns include `Sample_ID` and `Notes`. Input chemistry
+Optional identifier columns include <code>Sample_ID</code> and <code>Notes</code>. Input chemistry
 must use a consistent weight-percent basis and documented treatment of loss on
 ignition, below-detection values and total iron.
 
@@ -72,24 +74,24 @@ ignition, below-detection values and total iron.
 
 ### Latest release
 
-```powershell
+~~~powershell
 python -m pip install geonormpy
-```
+~~~
 
 ### Editable source installation
 
-```powershell
+~~~powershell
 git clone https://github.com/jordan-zav/GeoNormPy.git
 cd GeoNormPy
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -e .
-```
+~~~
 
 ## Quick Python example
 
-```python
+~~~python
 from geonormpy.norms.cipw import cipw
 
 sample = {
@@ -105,41 +107,41 @@ sample = {
 result = cipw(sample)
 print(result["minerals_wtpercent"])
 print(result["flags"])
-```
+~~~
 
 ## Command-line workflow
 
-```powershell
+~~~powershell
 geonormpy --help
 geonormpy schema
 geonormpy make-template
 geonormpy make-config
 geonormpy validate --input data/test_data.csv
 geonormpy run --config config/workflow.yaml
-```
+~~~
 
-The example batch launcher reads `data/test_data.csv` and writes
-`data/normative_results.csv`:
+The example batch launcher reads <code>data/test_data.csv</code> and writes
+<code>data/normative_results.csv</code>:
 
-```powershell
+~~~powershell
 python run_GeoNormPy.py
-```
+~~~
 
 ## Standard outputs
 
 ### Diagnostic fields
 
-- `silica_saturation`
-- `alumina_state`
-- `mass_balance_error`
-- `interpretive_flag`
-- `calc_error`
+- <code>silica_saturation</code>
+- <code>alumina_state</code>
+- <code>mass_balance_error</code>
+- <code>interpretive_flag</code>
+- <code>calc_error</code>
 
 ### Normative mineral fields
 
-`Q`, `Cor`, `Or`, `Ab`, `An`, `Le`, `Ne`, `Kp`, `Ac`, `Di`, `Hd`, `Wo`,
-`En`, `Fs`, `Fo`, `Fa`, `Mt`, `Hm`, `Ilm`, `Cm`, `Ru`, `Tn`, `Z`, `Ap`,
-`Cc`, `Py`, `Fl`, `Hl`, `Th`, `ns` and `ks`.
+<code>Q</code>, <code>Cor</code>, <code>Or</code>, <code>Ab</code>, <code>An</code>, <code>Le</code>, <code>Ne</code>, <code>Kp</code>, <code>Ac</code>, <code>Di</code>, <code>Hd</code>, <code>Wo</code>,
+<code>En</code>, <code>Fs</code>, <code>Fo</code>, <code>Fa</code>, <code>Mt</code>, <code>Hm</code>, <code>Ilm</code>, <code>Cm</code>, <code>Ru</code>, <code>Tn</code>, <code>Z</code>, <code>Ap</code>,
+<code>Cc</code>, <code>Py</code>, <code>Fl</code>, <code>Hl</code>, <code>Th</code>, <code>ns</code> and <code>ks</code>.
 
 Downstream software should preserve both the mineral results and the diagnostic
 columns. Filtering only the successful rows without retaining the error reason
@@ -161,10 +163,10 @@ Iron policies can be selected independently. Results record the selected
 profile, its version and calculation assumptions. See
 [profiles, API, CLI and scientific conventions](docs/PERFILES_CIPW.md).
 
-```powershell
+~~~powershell
 python -m pip install -e .
 python -m pytest -q
-```
+~~~
 
 The regression suite covers the CIPW engine, robustness cases, CLI behavior and
 configured workflows. See the [complete method description](docs/methods/Algoritmo_GeoNormPy_Completo.md)
@@ -179,17 +181,17 @@ See the [benchmark runner](benchmarks/README.md) for reproducible commands.
 
 | Path | Contents |
 | --- | --- |
-| `geonormpy/norms` | CIPW and batch calculation engine |
-| `geonormpy/core` | Chemistry constants, minerals and shared rules |
-| `geonormpy/schema.py` | Supported input/output schema |
-| `geonormpy/cli.py` | Command-line interface |
-| `config` | Example YAML workflow configuration |
-| `tests` | Numerical, robustness, CLI and workflow tests |
-| `docs` | Method, theory and audit material |
+| <code>geonormpy/norms</code> | CIPW and batch calculation engine |
+| <code>geonormpy/core</code> | Chemistry constants, minerals and shared rules |
+| <code>geonormpy/schema.py</code> | Supported input/output schema |
+| <code>geonormpy/cli.py</code> | Command-line interface |
+| <code>config</code> | Example YAML workflow configuration |
+| <code>tests</code> | Numerical, robustness, CLI and workflow tests |
+| <code>docs</code> | Method, theory and audit material |
 
 ## Citation
 
-La versión 1.0.0 incorpora errores estructurados y salida JSON. Consulta [Errores e integración](docs/ERRORS.md) y [Publicación en PyPI](docs/PUBLISHING.md).
+Version 1.0.0 introduced structured errors and JSON output. See [errors and integration](docs/ERRORS.md) and [PyPI publishing](docs/PUBLISHING.md).
 
 Use the metadata in [CITATION.cff](CITATION.cff) when citing GeoNormPy in a
 thesis, article or technical report.

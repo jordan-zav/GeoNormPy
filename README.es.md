@@ -25,6 +25,23 @@ Consultar [los metadatos de cita](CITATION.cff) y la
 [decisión de generaciones de GeoNormML](https://github.com/jordan-zav/GeoNormML/blob/main/docs/revisiones/modelos_legacy_y_vigentes.md).
 
 
+## Alcance metodológico y crítica
+
+Las pruebas del motor comprueban comportamiento numérico, inventarios y errores
+en los casos documentados; no certifican mineralogía modal ni precisión de un
+clasificador. Un inventario puede cerrar incluyendo componentes libres y
+correcciones firmadas aunque la asignación mineral siga incompleta: revisar el
+estado de cálculo, la química admitida y las advertencias, no solo la suma.
+
+Comparar perfiles exige igualar entradas, unidades, normalización y política de
+hierro, y declarar diferencias de apatita y carbonatos. Sustituir el perfil que
+generó las variables de un modelo ML requiere reevaluarlo bajo el mismo diseño.
+La revisión realizada no atribuye la diferencia de métricas Legacy a un fallo
+de GeoNormPy ni demuestra que el cierre mejorado aumente la exactitud ML.
+La [metodología y crítica de GeoNormML](https://github.com/jordan-zav/GeoNormML/blob/main/README.es.md#metodología-vigente-y-crítica)
+separa los resultados ya comprobados de la validación anidada e independiente
+que todavía debe realizarse para futuras selecciones.
+
 ## Qué permite hacer
 
 | Función | Alcance |

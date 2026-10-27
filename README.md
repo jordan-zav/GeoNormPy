@@ -36,6 +36,23 @@ an improvement in ML accuracy. See [citation metadata](CITATION.cff) and the
 [GeoNormML generation decision](https://github.com/jordan-zav/GeoNormML/blob/main/docs/revisiones/modelos_legacy_y_vigentes.md).
 
 
+## Methodological scope and critical assessment
+
+Engine tests check numerical behavior, component inventories and errors in the
+documented cases; they do not certify measured mineralogy or classifier accuracy.
+An inventory can close through free components and signed corrections while the
+mineral allocation remains incomplete. Inspect calculation status, supported
+chemistry and warnings rather than relying on closure alone.
+
+Profile comparisons must align inputs, units, normalization and iron policy,
+while declaring apatite and carbonate conventions. Replacing the profile that
+generated an ML model's features requires reevaluation under the same design.
+The completed review neither attributes Legacy metric differences to a GeoNormPy
+failure nor demonstrates that better closure improves ML accuracy. The
+[GeoNormML methodology and critique](https://github.com/jordan-zav/GeoNormML/blob/main/README.md#current-methodology-and-critical-assessment)
+distinguishes checked results from the nested and independent evaluation still
+required for future selection procedures.
+
 ## Workflow at a glance
 
 ~~~text

@@ -10,6 +10,21 @@ diagnósticos y tablas auditables mediante Python o la línea de comandos.
 > Una norma CIPW es un cálculo idealizado, no mineralogía modal medida. No
 > sustituye la petrografía, las relaciones de campo ni un diagrama QAPF apropiado.
 
+## Legacy y referencia al congreso
+
+El trabajo anterior de GeoNormPy / GeoNormML fue **presentado como trabajo técnico
+en el [XXIII Congreso Peruano de Geología (CPG XXIII)](https://congresosgp.org.pe/)**,
+organizado por la Sociedad Geológica del Perú en 2026. Esa generación se conserva
+como **Legacy**; sus cifras históricas no son los benchmarks vigentes.
+
+GeoNormPy 1.0.0 se conserva como versión Legacy. El material del congreso anunciaba
+0.1.1, otro corte temporal. El perfil extended_cipw_v3 3.1 corregido de 1.1.0 no es
+idéntico a esas versiones. Verma 2003 y Pruseth 2009 son perfiles de cálculo, no
+clasificadores entrenados. El cierre numérico no demuestra mayor precisión ML.
+Consultar [los metadatos de cita](CITATION.cff) y la
+[decisión de generaciones de GeoNormML](https://github.com/jordan-zav/GeoNormML/blob/main/docs/revisiones/modelos_legacy_y_vigentes.md).
+
+
 ## Qué permite hacer
 
 | Función | Alcance |

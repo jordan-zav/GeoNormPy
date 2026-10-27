@@ -10,3 +10,14 @@ version: "1.1.0"
 date-released: 2026-10-26
 url: "https://github.com/jordan-zav/GeoNormPy"
 license: "GPL-3.0-or-later"
+
+references:
+  - type: conference-paper
+    authors:
+      - family-names: "Zavaleta Reyes"
+        given-names: "Jordan Angel Luciano"
+    title: "GeoNormPy y GeoNormML: Un ecosistema abierto en Python e integración de algoritmos determinísticos para el cálculo normativo y clasificación de rocas ígneas en el Perú"
+    collection-title: "XXIII Congreso Peruano de Geología"
+    year: 2026
+    notes: "Presentado como trabajo técnico. Generación histórica GeoNormPy / GeoNormML Legacy. No se ha asignado aquí un DOI ni paginación."
+    url: "https://congresosgp.org.pe/"

@@ -21,6 +21,21 @@ diagnostics and batch-ready tables from Python or the command line.
 > measured modal mineralogy and does not replace petrography, field relations
 > or an appropriate classification diagram such as QAPF.
 
+## Legacy and congress reference
+
+The earlier GeoNormPy / GeoNormML work was **presented as a technical paper at the
+[XXIII Peruvian Geological Congress (CPG XXIII)](https://congresosgp.org.pe/)**,
+organized by the Sociedad Geológica del Perú in 2026. That research generation
+is identified as **Legacy**; its historical figures are not current benchmarks.
+
+GeoNormPy 1.0.0 is retained as a Legacy release. The congress material advertised
+0.1.1, an earlier publication cut. The corrected extended_cipw_v3 3.1 profile in
+1.1.0 is not identical to either earlier release. Verma 2003 and Pruseth 2009 are
+calculation profiles, not trained classifiers. Numerical closure does not establish
+an improvement in ML accuracy. See [citation metadata](CITATION.cff) and the
+[GeoNormML generation decision](https://github.com/jordan-zav/GeoNormML/blob/main/docs/revisiones/modelos_legacy_y_vigentes.md).
+
+
 ## Workflow at a glance
 
 ~~~text

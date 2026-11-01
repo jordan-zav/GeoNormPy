@@ -1,0 +1,188 @@
+<svg class="rich-terminal" viewBox="0 0 1287 879.5999999999999" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+
+
+
+    .terminal-1788510467-matrix {
+        font-family: Consolas, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1788510467-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1788510467-r1 { fill: #dce5ef }
+.terminal-1788510467-r2 { fill: #305568 }
+.terminal-1788510467-r3 { fill: #f1f5f9;font-weight: bold }
+.terminal-1788510467-r4 { fill: #57dbc7 }
+.terminal-1788510467-r5 { fill: #9aadc2 }
+.terminal-1788510467-r6 { fill: #244a48 }
+.terminal-1788510467-r7 { fill: #57dbc7;font-weight: bold }
+.terminal-1788510467-r8 { fill: #dce5ef;font-weight: bold }
+.terminal-1788510467-r9 { fill: #b2c3d5 }
+.terminal-1788510467-r10 { fill: #f1f5f9 }
+.terminal-1788510467-r11 { fill: #9aadc2;font-weight: bold }
+.terminal-1788510467-r12 { fill: #e8bf75;font-weight: bold }
+.terminal-1788510467-r13 { fill: #7c91a9 }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1788510467-clip-terminal">
+      <rect x="0" y="0" width="1267.8" height="828.5999999999999" />
+    </clipPath>
+    <clipPath id="terminal-1788510467-line-0">
+    <rect x="0" y="1.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-1">
+    <rect x="0" y="25.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-2">
+    <rect x="0" y="50.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-3">
+    <rect x="0" y="74.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-4">
+    <rect x="0" y="99.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-5">
+    <rect x="0" y="123.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-6">
+    <rect x="0" y="147.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-7">
+    <rect x="0" y="172.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-8">
+    <rect x="0" y="196.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-9">
+    <rect x="0" y="221.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-10">
+    <rect x="0" y="245.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-11">
+    <rect x="0" y="269.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-12">
+    <rect x="0" y="294.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-13">
+    <rect x="0" y="318.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-14">
+    <rect x="0" y="343.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-15">
+    <rect x="0" y="367.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-16">
+    <rect x="0" y="391.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-17">
+    <rect x="0" y="416.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-18">
+    <rect x="0" y="440.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-19">
+    <rect x="0" y="465.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-20">
+    <rect x="0" y="489.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-21">
+    <rect x="0" y="513.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-22">
+    <rect x="0" y="538.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-23">
+    <rect x="0" y="562.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-24">
+    <rect x="0" y="587.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-25">
+    <rect x="0" y="611.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-26">
+    <rect x="0" y="635.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-27">
+    <rect x="0" y="660.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-28">
+    <rect x="0" y="684.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-29">
+    <rect x="0" y="709.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-30">
+    <rect x="0" y="733.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-31">
+    <rect x="0" y="757.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1788510467-line-32">
+    <rect x="0" y="782.3" width="1268.8" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0d1422" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1285" height="877.6" rx="8"/><text class="terminal-1788510467-title" fill="#dce5ef" text-anchor="middle" x="642" y="27">GeoNormPy&#160;/&#160;Python</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1788510467-clip-terminal)">
+
+    <g class="terminal-1788510467-matrix">
+    <text class="terminal-1788510467-r1" x="1268.8" y="20" textLength="12.2" clip-path="url(#terminal-1788510467-line-0)">
+</text><text class="terminal-1788510467-r1" x="0" y="44.4" textLength="500.2" clip-path="url(#terminal-1788510467-line-1)">&#160;&#160;$&#160;python&#160;scripts/portfolio_rich_demo.py</text><text class="terminal-1788510467-r1" x="1268.8" y="44.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-1)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="68.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-2)">
+</text><text class="terminal-1788510467-r2" x="0" y="93.2" textLength="1268.8" clip-path="url(#terminal-1788510467-line-3)">╭──────────────────────────────────────────────────────────────────────────────────────────────────────╮</text><text class="terminal-1788510467-r1" x="1268.8" y="93.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-3)">
+</text><text class="terminal-1788510467-r2" x="0" y="117.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-4)">│</text><text class="terminal-1788510467-r3" x="36.6" y="117.6" textLength="109.8" clip-path="url(#terminal-1788510467-line-4)">GeoNormPy</text><text class="terminal-1788510467-r4" x="170.8" y="117.6" textLength="341.6" clip-path="url(#terminal-1788510467-line-4)">/&#160;&#160;CIPW&#160;normative&#160;mineralogy</text><text class="terminal-1788510467-r2" x="1256.6" y="117.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-4)">│</text><text class="terminal-1788510467-r1" x="1268.8" y="117.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-4)">
+</text><text class="terminal-1788510467-r2" x="0" y="142" textLength="12.2" clip-path="url(#terminal-1788510467-line-5)">│</text><text class="terminal-1788510467-r5" x="36.6" y="142" textLength="622.2" clip-path="url(#terminal-1788510467-line-5)">Reproducible&#160;calculations&#160;from&#160;whole-rock&#160;chemistry</text><text class="terminal-1788510467-r2" x="1256.6" y="142" textLength="12.2" clip-path="url(#terminal-1788510467-line-5)">│</text><text class="terminal-1788510467-r1" x="1268.8" y="142" textLength="12.2" clip-path="url(#terminal-1788510467-line-5)">
+</text><text class="terminal-1788510467-r2" x="0" y="166.4" textLength="1268.8" clip-path="url(#terminal-1788510467-line-6)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="terminal-1788510467-r1" x="1268.8" y="166.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-6)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="190.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-7)">
+</text><text class="terminal-1788510467-r6" x="0" y="215.2" textLength="1268.8" clip-path="url(#terminal-1788510467-line-8)">╭──────────────────────────────────────────────────────────────────────────────────────────────────────╮</text><text class="terminal-1788510467-r1" x="1268.8" y="215.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-8)">
+</text><text class="terminal-1788510467-r6" x="0" y="239.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-9)">│</text><text class="terminal-1788510467-r7" x="36.6" y="239.6" textLength="183" clip-path="url(#terminal-1788510467-line-9)">PASS&#160;&#160;218&#160;tests</text><text class="terminal-1788510467-r5" x="244" y="239.6" textLength="610" clip-path="url(#terminal-1788510467-line-9)">|&#160;&#160;1.07s&#160;&#160;|&#160;&#160;CIPW&#160;/&#160;profiles&#160;/&#160;cation&#160;conservation</text><text class="terminal-1788510467-r6" x="1256.6" y="239.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-9)">│</text><text class="terminal-1788510467-r1" x="1268.8" y="239.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-9)">
+</text><text class="terminal-1788510467-r6" x="0" y="264" textLength="1268.8" clip-path="url(#terminal-1788510467-line-10)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="terminal-1788510467-r1" x="1268.8" y="264" textLength="12.2" clip-path="url(#terminal-1788510467-line-10)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="288.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-11)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="312.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-12)">
+</text><text class="terminal-1788510467-r8" x="24.4" y="337.2" textLength="341.6" clip-path="url(#terminal-1788510467-line-13)">MAJOR&#160;OXIDES&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r8" x="402.6" y="337.2" textLength="146.4" clip-path="url(#terminal-1788510467-line-13)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;wt%</text><text class="terminal-1788510467-r8" x="634.4" y="337.2" textLength="353.8" clip-path="url(#terminal-1788510467-line-13)">NORMATIVE&#160;MINERALS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r8" x="1024.8" y="337.2" textLength="134.2" clip-path="url(#terminal-1788510467-line-13)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;wt%</text><text class="terminal-1788510467-r1" x="1268.8" y="337.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-13)">
+</text><text class="terminal-1788510467-r2" x="0" y="361.6" textLength="573.4" clip-path="url(#terminal-1788510467-line-14)">&#160;─────────────────────────────────────────────&#160;</text><text class="terminal-1788510467-r2" x="610" y="361.6" textLength="573.4" clip-path="url(#terminal-1788510467-line-14)">&#160;─────────────────────────────────────────────&#160;</text><text class="terminal-1788510467-r1" x="1268.8" y="361.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-14)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="386" textLength="341.6" clip-path="url(#terminal-1788510467-line-15)">SiO2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="386" textLength="146.4" clip-path="url(#terminal-1788510467-line-15)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;72.50</text><text class="terminal-1788510467-r9" x="634.4" y="386" textLength="353.8" clip-path="url(#terminal-1788510467-line-15)">Quartz&#160;(Q)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="386" textLength="134.2" clip-path="url(#terminal-1788510467-line-15)">&#160;&#160;&#160;&#160;32.1371</text><text class="terminal-1788510467-r1" x="1268.8" y="386" textLength="12.2" clip-path="url(#terminal-1788510467-line-15)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="410.4" textLength="341.6" clip-path="url(#terminal-1788510467-line-16)">Al2O3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="410.4" textLength="146.4" clip-path="url(#terminal-1788510467-line-16)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;13.50</text><text class="terminal-1788510467-r9" x="634.4" y="410.4" textLength="353.8" clip-path="url(#terminal-1788510467-line-16)">Albite&#160;(Ab)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="410.4" textLength="134.2" clip-path="url(#terminal-1788510467-line-16)">&#160;&#160;&#160;&#160;29.1655</text><text class="terminal-1788510467-r1" x="1268.8" y="410.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-16)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="434.8" textLength="341.6" clip-path="url(#terminal-1788510467-line-17)">FeOT&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="434.8" textLength="146.4" clip-path="url(#terminal-1788510467-line-17)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.50</text><text class="terminal-1788510467-r9" x="634.4" y="434.8" textLength="353.8" clip-path="url(#terminal-1788510467-line-17)">Orthoclase&#160;(Or)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="434.8" textLength="134.2" clip-path="url(#terminal-1788510467-line-17)">&#160;&#160;&#160;&#160;23.9639</text><text class="terminal-1788510467-r1" x="1268.8" y="434.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-17)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="459.2" textLength="341.6" clip-path="url(#terminal-1788510467-line-18)">MgO&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="459.2" textLength="146.4" clip-path="url(#terminal-1788510467-line-18)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;0.50</text><text class="terminal-1788510467-r9" x="634.4" y="459.2" textLength="353.8" clip-path="url(#terminal-1788510467-line-18)">Anorthite&#160;(An)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="459.2" textLength="134.2" clip-path="url(#terminal-1788510467-line-18)">&#160;&#160;&#160;&#160;&#160;8.3908</text><text class="terminal-1788510467-r1" x="1268.8" y="459.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-18)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="483.6" textLength="341.6" clip-path="url(#terminal-1788510467-line-19)">CaO&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="483.6" textLength="146.4" clip-path="url(#terminal-1788510467-line-19)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.80</text><text class="terminal-1788510467-r9" x="634.4" y="483.6" textLength="353.8" clip-path="url(#terminal-1788510467-line-19)">Ferrosilite&#160;(Fs)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="483.6" textLength="134.2" clip-path="url(#terminal-1788510467-line-19)">&#160;&#160;&#160;&#160;&#160;3.1045</text><text class="terminal-1788510467-r1" x="1268.8" y="483.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-19)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="508" textLength="341.6" clip-path="url(#terminal-1788510467-line-20)">Na2O&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="508" textLength="146.4" clip-path="url(#terminal-1788510467-line-20)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.40</text><text class="terminal-1788510467-r9" x="634.4" y="508" textLength="353.8" clip-path="url(#terminal-1788510467-line-20)">Enstatite&#160;(En)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="508" textLength="134.2" clip-path="url(#terminal-1788510467-line-20)">&#160;&#160;&#160;&#160;&#160;1.2626</text><text class="terminal-1788510467-r1" x="1268.8" y="508" textLength="12.2" clip-path="url(#terminal-1788510467-line-20)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="532.4" textLength="341.6" clip-path="url(#terminal-1788510467-line-21)">K2O&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="532.4" textLength="146.4" clip-path="url(#terminal-1788510467-line-21)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;4.00</text><text class="terminal-1788510467-r9" x="634.4" y="532.4" textLength="353.8" clip-path="url(#terminal-1788510467-line-21)">Magnetite&#160;(Mt)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="532.4" textLength="134.2" clip-path="url(#terminal-1788510467-line-21)">&#160;&#160;&#160;&#160;&#160;0.6126</text><text class="terminal-1788510467-r1" x="1268.8" y="532.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-21)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="556.8" textLength="341.6" clip-path="url(#terminal-1788510467-line-22)">TiO2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="556.8" textLength="146.4" clip-path="url(#terminal-1788510467-line-22)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;0.30</text><text class="terminal-1788510467-r9" x="634.4" y="556.8" textLength="353.8" clip-path="url(#terminal-1788510467-line-22)">Ilmenite&#160;(Ilm)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="556.8" textLength="134.2" clip-path="url(#terminal-1788510467-line-22)">&#160;&#160;&#160;&#160;&#160;0.5777</text><text class="terminal-1788510467-r1" x="1268.8" y="556.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-22)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="581.2" textLength="341.6" clip-path="url(#terminal-1788510467-line-23)">P2O5&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="581.2" textLength="146.4" clip-path="url(#terminal-1788510467-line-23)">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;0.10</text><text class="terminal-1788510467-r9" x="634.4" y="581.2" textLength="353.8" clip-path="url(#terminal-1788510467-line-23)">Corundum&#160;(Cor)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="581.2" textLength="134.2" clip-path="url(#terminal-1788510467-line-23)">&#160;&#160;&#160;&#160;&#160;0.5511</text><text class="terminal-1788510467-r1" x="1268.8" y="581.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-23)">
+</text><text class="terminal-1788510467-r9" x="634.4" y="605.6" textLength="353.8" clip-path="url(#terminal-1788510467-line-24)">Apatite&#160;(Ap)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r4" x="1024.8" y="605.6" textLength="134.2" clip-path="url(#terminal-1788510467-line-24)">&#160;&#160;&#160;&#160;&#160;0.2349</text><text class="terminal-1788510467-r1" x="1268.8" y="605.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-24)">
+</text><text class="terminal-1788510467-r9" x="24.4" y="630" textLength="341.6" clip-path="url(#terminal-1788510467-line-25)">Synthetic&#160;granite&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-1788510467-r10" x="402.6" y="630" textLength="146.4" clip-path="url(#terminal-1788510467-line-25)">&#160;&#160;&#160;&#160;&#160;Example</text><text class="terminal-1788510467-r1" x="1268.8" y="630" textLength="12.2" clip-path="url(#terminal-1788510467-line-25)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="654.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-26)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="678.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-27)">
+</text><text class="terminal-1788510467-r2" x="0" y="703.2" textLength="24.4" clip-path="url(#terminal-1788510467-line-28)">╭─</text><text class="terminal-1788510467-r11" x="36.6" y="703.2" textLength="280.6" clip-path="url(#terminal-1788510467-line-28)">CALCULATION&#160;DIAGNOSTICS</text><text class="terminal-1788510467-r2" x="329.4" y="703.2" textLength="915" clip-path="url(#terminal-1788510467-line-28)">───────────────────────────────────────────────────────────────────────────</text><text class="terminal-1788510467-r2" x="1244.4" y="703.2" textLength="24.4" clip-path="url(#terminal-1788510467-line-28)">─╮</text><text class="terminal-1788510467-r1" x="1268.8" y="703.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-28)">
+</text><text class="terminal-1788510467-r2" x="0" y="727.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-29)">│</text><text class="terminal-1788510467-r5" x="36.6" y="727.6" textLength="73.2" clip-path="url(#terminal-1788510467-line-29)">SILICA</text><text class="terminal-1788510467-r12" x="134.2" y="727.6" textLength="158.6" clip-path="url(#terminal-1788510467-line-29)">oversaturated</text><text class="terminal-1788510467-r5" x="353.8" y="727.6" textLength="85.4" clip-path="url(#terminal-1788510467-line-29)">ALUMINA</text><text class="terminal-1788510467-r12" x="463.6" y="727.6" textLength="146.4" clip-path="url(#terminal-1788510467-line-29)">peraluminous</text><text class="terminal-1788510467-r2" x="1256.6" y="727.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-29)">│</text><text class="terminal-1788510467-r1" x="1268.8" y="727.6" textLength="12.2" clip-path="url(#terminal-1788510467-line-29)">
+</text><text class="terminal-1788510467-r2" x="0" y="752" textLength="12.2" clip-path="url(#terminal-1788510467-line-30)">│</text><text class="terminal-1788510467-r5" x="36.6" y="752" textLength="219.6" clip-path="url(#terminal-1788510467-line-30)">MASS&#160;BALANCE&#160;ERROR</text><text class="terminal-1788510467-r1" x="280.6" y="752" textLength="109.8" clip-path="url(#terminal-1788510467-line-30)">6.317e-04</text><text class="terminal-1788510467-r2" x="1256.6" y="752" textLength="12.2" clip-path="url(#terminal-1788510467-line-30)">│</text><text class="terminal-1788510467-r1" x="1268.8" y="752" textLength="12.2" clip-path="url(#terminal-1788510467-line-30)">
+</text><text class="terminal-1788510467-r2" x="0" y="776.4" textLength="1268.8" clip-path="url(#terminal-1788510467-line-31)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="terminal-1788510467-r1" x="1268.8" y="776.4" textLength="12.2" clip-path="url(#terminal-1788510467-line-31)">
+</text><text class="terminal-1788510467-r13" x="24.4" y="800.8" textLength="1037" clip-path="url(#terminal-1788510467-line-32)">Synthetic&#160;example.&#160;Normative&#160;mineralogy&#160;is&#160;calculated,&#160;not&#160;measured&#160;modal&#160;mineralogy.</text><text class="terminal-1788510467-r1" x="1268.8" y="800.8" textLength="12.2" clip-path="url(#terminal-1788510467-line-32)">
+</text><text class="terminal-1788510467-r1" x="1268.8" y="825.2" textLength="12.2" clip-path="url(#terminal-1788510467-line-33)">
+</text>
+    </g>
+    </g>
+</svg>

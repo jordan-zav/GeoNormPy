@@ -1,5 +1,7 @@
 <p align="center"><a href="README.md">English</a> · <strong>Español</strong></p>
 
+<p align="center"><img src="docs/assets/geonormpy-logo-v1.png" alt="Logo de GeoNormPy" width="560"></p>
+
 # GeoNormPy
 
 **Mineralogía normativa CIPW reproducible a partir de química de roca total.**
@@ -138,3 +140,17 @@ completo de campos minerales y las instrucciones de desarrollo.
 
 [GNU GPL v3](LICENSE). Jordan Zavaleta — GisGeo Dev.
 [Correo](mailto:jordanzav@gisgeo.dev) · [Sitio web](https://gisgeo.dev).
+
+## Ejemplos reproducibles para el portafolio
+
+El ejemplo scripts/portfolio_demo.py ejecuta las comprobaciones específicas CIPW,
+perfiles y conservación de cationes, y después muestra el cálculo de una química
+de granito explícitamente sintética. scripts/portfolio_rich_demo.py presenta el
+mismo cálculo con la biblioteca opcional Rich y permite exportar la transcripción
+y sus evidencias mediante --export-dir. Rich se requiere solo para ese script de
+presentación, no para el motor de cálculo.
+
+Las imágenes y archivos de procedencia de docs/assets describen capturas
+históricas. Son demostraciones del repositorio, no validación científica
+independiente. Los ejemplos y las comprobaciones deben ejecutarse en la PC de
+desarrollo antes de usar una captura nueva o distribuir software modificado.

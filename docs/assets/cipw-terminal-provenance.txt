@@ -1,0 +1,14 @@
+GeoNormPy portfolio screenshot
+
+Actual Windows CMD window captured on 2026-10-27 (America/Lima).
+Source revision: fca9958, plus the new scripts/portfolio_demo.py.
+Command: DEVRESOURCES_RUN.cmd python scripts\portfolio_demo.py
+Selected tests: tests/test_cipw.py, tests/test_profiles.py, tests/test_cation_conservation.py.
+Visible run: 218 passed in 1.11s. Process exit code: 0.
+These are repository checks, not an independent scientific validation.
+Example: synthetic granite with oxide inputs printed in the capture.
+Results: CIPW normative mineral weight percentages, silica saturation,
+alumina state and mass balance error from the actual library output.
+Normative minerals are not measured modal mineralogy.
+No client or private field data were used.
+The PNG is a capture of the actual window; no generated terminal output.

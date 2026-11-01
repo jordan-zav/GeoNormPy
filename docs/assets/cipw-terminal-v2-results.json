@@ -1,0 +1,87 @@
+{
+  "input": {
+    "SiO2": 72.5,
+    "Al2O3": 13.5,
+    "FeOT": 2.5,
+    "MgO": 0.5,
+    "CaO": 1.8,
+    "Na2O": 3.4,
+    "K2O": 4.0,
+    "TiO2": 0.3,
+    "P2O5": 0.1
+  },
+  "result": {
+    "minerals_moles": {
+      "Ap": 0.0007142038065594713,
+      "Ilm": 0.0038080138651595524,
+      "Or": 0.08609872616100694,
+      "Ab": 0.11122529030869938,
+      "An": 0.030160023823092273,
+      "Cor": 0.005404658450851831,
+      "Mt": 0.0026457570861417867,
+      "En": 0.012576536462668422,
+      "Fs": 0.023531476024972235,
+      "Q": 0.5348791077190311
+    },
+    "minerals_wtpercent": {
+      "Ap": 0.23487306382514778,
+      "Ilm": 0.5777137834833558,
+      "Or": 23.963858452393065,
+      "Ab": 29.165495624747155,
+      "An": 8.3908202278225,
+      "Cor": 0.5510643803073036,
+      "Mt": 0.6125985957252694,
+      "En": 1.262558495487283,
+      "Fs": 3.1045076319745877,
+      "Q": 32.137141429082554
+    },
+    "flags": {
+      "volatile_fraction_moles": 0.0,
+      "silica_saturation": "oversaturated",
+      "alumina_state": "peraluminous",
+      "norm_model": "extended_cipw_v3",
+      "mass_balance_warning": true,
+      "residual_silica_deficit_moles": 0.0,
+      "iron_mode": "estimated_from_FeOT",
+      "iron_warning": true,
+      "warnings": [
+        "Iron speciation estimated from FeOT using fixed Fe3+/Fe ratio (0.15)."
+      ],
+      "calculation_complete": true,
+      "iron_policy_requested": "auto",
+      "iron_policy_applied": "fixed",
+      "iron_parameters": {
+        "fe3_fraction": 0.15
+      },
+      "norm_profile": "extended_cipw_v3",
+      "norm_profile_version": "3.1"
+    },
+    "mass_balance_error": 0.0006316848482015303,
+    "total_mass_sum": 100.0006316848482,
+    "calculation_metadata": {
+      "profile": "extended_cipw_v3",
+      "profile_version": "3.1",
+      "implementation_version": "1.1.0",
+      "algorithm": "legacy_sequential",
+      "reference": "GeoNormPy 1.0.0; local numerical correction 2026-10-25",
+      "iron_policy_requested": "auto",
+      "iron_policy_applied": "fixed",
+      "iron_parameters": {
+        "fe3_fraction": 0.15
+      },
+      "carbonate_mode": "calcite",
+      "strict": false,
+      "mass_tol": 1e-06,
+      "input_units": "wt_percent (oxides and F, Cl, S); no ppm inference",
+      "normalization": "common input basis: all supplied components to 100 before and after iron policy; no intermediate rounding",
+      "mineral_units": "formula moles and wt_percent; FAp formula uses three P2O5"
+    }
+  },
+  "tests": {
+    "tests": 218,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "elapsed_seconds": 1.069
+}

@@ -2,6 +2,8 @@
 
 <div align="center">
 
+<img src="docs/assets/geonormpy-logo-v1.png" alt="GeoNormPy logo" width="560">
+
 # GeoNormPy
 
 **Reproducible CIPW normative mineralogy for whole-rock geochemistry**
@@ -234,3 +236,16 @@ GeoNormPy is distributed under the [GNU General Public License v3.0](LICENSE).
 
 Jordan Zavaleta — GisGeo Dev<br>
 [jordanzav@gisgeo.dev](mailto:jordanzav@gisgeo.dev) · [gisgeo.dev](https://gisgeo.dev)
+
+## Reproducible portfolio examples
+
+The scripts/portfolio_demo.py example runs the focused CIPW, profile and cation
+conservation checks, then prints the calculation for explicitly synthetic granite
+chemistry. scripts/portfolio_rich_demo.py presents the same calculation using the
+optional Rich library and can export its transcript and evidence with --export-dir.
+Rich is required only for that presentation script, not for the calculation engine.
+
+The retained images and provenance files in docs/assets describe historical
+captures. They are repository demonstrations, not independent scientific
+validation. Run the examples and project checks on the development PC before
+using a new capture or distributing changed software.

@@ -14,6 +14,13 @@ La integración continua está configurada para Python 3.9, 3.11 y 3.14. La prep
 
 Después de construir, ejecutar python scripts/check_distribution.py RUTA_DIST para revisar metadatos, licencia y archivos necesarios en ambos artefactos. Repetir la suite desde el archivo fuente extraído permite detectar omisiones del manifiesto que una ejecución desde el repositorio no revela.
 
+La comprobación reproducible del archivo fuente es
+python scripts/check_source_distribution.py RUTA_DIST --extract-to CARPETA_NUEVA.
+En esta PC, la carpeta de extracción de código debe quedar bajo O:/0. Projects;
+los wheel, archivos comprimidos, logs y temporales de herramientas se guardan
+bajo D:/DevResources. El workflow ejecuta también esta comprobación antes de
+publicar y conserva la suite de los tres perfiles importados desde el wheel real.
+
 ## Publicación
 
 Los candidatos 1.1.0 se construyen en una sesión nueva de D:\DevResources\Sessions\GeoNormPy, separados de la entrega anterior 1.0.0. SHA256SUMS.txt permite verificar su integridad. Conservar los artefactos y el informe de preparación. Preparar un candidato no publica archivos en PyPI.

@@ -31,7 +31,8 @@ def check_distribution(directory):
                     "config/workflow.yaml", "tests/fixtures/legacy_profile_reference.json",
                     "tests/test_profile_properties.py", "docs/PERFILES_CIPW.md",
                     "benchmarks/benchmark_profiles.py", "benchmarks/benchmark_accessories.py",
-                    "benchmarks/results/cipw_profiles_20261026.json", "scripts/check_distribution.py")
+                    "benchmarks/results/cipw_profiles_20261026.json", "scripts/check_distribution.py",
+                    "scripts/check_source_distribution.py", "docs/STATUS.md", "docs/STATUS.es.md", "README.es.md")
         for name in required:
             archive.getmember(prefix + name)
         source_metadata = email.message_from_bytes(archive.extractfile(prefix + "PKG-INFO").read())

@@ -8,6 +8,8 @@
 
 **Reproducible CIPW normative mineralogy for whole-rock geochemistry**
 
+[Current delivery state and remaining work](docs/STATUS.md).
+
 Transform major-oxide analyses into auditable normative mineral assemblages,
 diagnostics and batch-ready tables from Python or the command line.
 

@@ -26,3 +26,6 @@ pytest
 
 # Windows
 desktop.ini
+
+# Local release-session pointer, never a distribution input
+.release-session.local.txt

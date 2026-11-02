@@ -4,6 +4,8 @@
 
 # GeoNormPy
 
+[Estado de la entrega y pendientes](docs/STATUS.es.md).
+
 **Mineralogía normativa CIPW reproducible a partir de química de roca total.**
 
 Convierte análisis de óxidos mayores en asociaciones minerales normativas,

@@ -21,6 +21,9 @@ def test_installed_wheel_cli_runs_without_checkout(tmp_path, profile):
         ['SiO2', 'Al2O3', 'FeOT', 'MgO', 'CaO', 'Na2O', 'K2O'], 'id_columns': ['Sample_ID']},
         'output': {'file': str(output)}}), encoding='utf-8')
     code = ('import sys;sys.path.insert(0,sys.argv[1]);'
+        'import geonormpy;from importlib.metadata import version;'
+        'assert geonormpy.__file__.startswith(sys.argv[1]);'
+        'assert geonormpy.__version__==version("geonormpy");'
         'from geonormpy.cli import main;raise SystemExit(main(["run","--config",sys.argv[2],"--profile",sys.argv[3],"--json"]))')
     process = subprocess.run([sys.executable, '-I', '-c', code, str(Path(wheel).resolve()), str(config), profile],
         cwd=tmp_path, capture_output=True, text=True, timeout=30)

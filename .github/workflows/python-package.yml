@@ -40,3 +40,8 @@ jobs:
       - name: Test the built wheel outside the checkout
         run: >-
           python -c "import os,pathlib,pytest; os.environ['GEONORMPY_AUDIT_WHEEL']=str(next(pathlib.Path('dist').glob('*.whl')).resolve()); raise SystemExit(pytest.main(['tests/test_installed_wheel.py','-q']))"
+
+      - name: Test the extracted source distribution
+        run: >-
+          python scripts/check_source_distribution.py dist
+          --extract-to "${{ runner.temp }}/geonormpy-source-check"
